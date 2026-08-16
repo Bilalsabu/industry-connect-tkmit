@@ -1674,6 +1674,448 @@ button {
   }
 }
 
+/* ==========================================================================
+   Events Marquee Infinite Ticker Styles
+   ========================================================================== */
+.events-marquee-wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding: 12px 0 24px;
+  mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+}
+
+.events-marquee-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: eventsMarqueeScroll 32s linear infinite;
+  will-change: transform;
+}
+
+.events-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes eventsMarqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 12px));
+  }
+}
+
+.events-marquee-track .event-card {
+  width: 380px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Featured Internships Section
+   ========================================================================== */
+.section-internships {
+  padding: 80px 0;
+  background: linear-gradient(180deg, #f8faff 0%, #f1f4fd 100%);
+  position: relative;
+}
+
+.internships-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 40px;
+}
+
+.internships-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 24px;
+}
+
+.internship-card {
+  background: #ffffff;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(88, 66, 235, 0.08);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+  transition: all var(--trans-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.internship-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(88, 66, 235, 0.12);
+  border-color: rgba(88, 66, 235, 0.25);
+}
+
+.internship-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.company-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f1edfe;
+  color: var(--primary);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.intern-badge-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #ecfdf5;
+  color: #059669;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.intern-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  letter-spacing: -0.015em;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.intern-company-name {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.intern-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  background: #f8fafc;
+  padding: 14px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.intern-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.84rem;
+  color: #475569;
+  font-weight: 600;
+}
+
+.intern-meta-item svg,
+.intern-meta-item i {
+  color: var(--primary);
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.intern-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.intern-tag {
+  background: #f1f5f9;
+  color: #334155;
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.intern-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 18px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.intern-stipend-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.intern-stipend-label {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.intern-stipend-amount {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.btn-apply-intern {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--primary);
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 700;
+  transition: all var(--trans-fast);
+  box-shadow: 0 4px 14px rgba(88, 66, 235, 0.25);
+}
+
+.btn-apply-intern:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(88, 66, 235, 0.35);
+}
+
+/* ==========================================================================
+   Horizontal Pinned Scrolling Gallery (Bijwal Reference Style)
+   ========================================================================== */
+.section-gallery {
+  position: relative;
+  background: #0b0f19;
+  color: #ffffff;
+  overflow: hidden;
+  padding: 0 0 60px 0;
+}
+
+.gallery-scroll-container {
+  position: relative;
+  height: 280vh; /* Scroll runway for smooth horizontal translation */
+  width: 100%;
+}
+
+.gallery-sticky-wrapper {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding: 40px 0;
+}
+
+.gallery-header-row {
+  max-width: 100%;
+  padding: 0 clamp(24px, 4vw, 56px);
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 5;
+}
+
+.gallery-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(88, 66, 235, 0.25);
+  border: 1px solid rgba(88, 66, 235, 0.4);
+  color: #a5b4fc;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.gallery-title {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.gallery-subtext {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 480px;
+}
+
+.gallery-horizontal-track {
+  display: flex;
+  gap: 36px;
+  padding: 0 clamp(24px, 4vw, 56px);
+  width: max-content;
+  will-change: transform;
+  transform: translateX(0);
+  transition: transform 0.08s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-card {
+  width: 380px;
+  height: 480px;
+  flex-shrink: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  position: relative;
+  background: rgba(18, 24, 38, 0.85);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.gallery-card:hover {
+  border-color: rgba(88, 66, 235, 0.6);
+  transform: translateY(-4px);
+}
+
+.gallery-img-inner {
+  width: 100%;
+  height: 380px;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  background: #1e293b;
+}
+
+.gallery-img-inner img {
+  width: 115%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  left: -7.5%;
+  top: 0;
+  will-change: transform;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 15, 25, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.gallery-hover-overlay span {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.gallery-hover-overlay svg {
+  color: #ffffff;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-card:hover .gallery-hover-overlay {
+  opacity: 1;
+}
+
+.gallery-card:hover .gallery-hover-overlay svg {
+  transform: translateX(4px);
+}
+
+.gallery-card-info {
+  padding: 16px 8px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gallery-card-info h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.gallery-card-info p {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+}
+
+/* Gallery CTA Final Card */
+.gallery-cta-card {
+  width: 420px;
+  height: 480px;
+  flex-shrink: 0;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #5842eb 0%, #3725b8 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 32px;
+  box-shadow: 0 25px 60px rgba(88, 66, 235, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.gallery-cta-card h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.gallery-cta-card p {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+  .gallery-scroll-container {
+    height: auto;
+  }
+  .gallery-sticky-wrapper {
+    position: relative;
+    height: auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .gallery-horizontal-track {
+    overflow-x: auto;
+    padding-bottom: 20px;
+  }
+}
+
+
   </style>
 </head>
 <body>
@@ -1760,55 +2202,6 @@ button {
               <button class="btn-secondary" id="hero-learn-btn" onclick="openAboutModal()">
                 <span>Learn More</span>
               </button>
-            </div>
-          </div>
-
-          <!-- Quick Action Bar -->
-          <div class="hero-quickbar">
-            <div class="quickbar-item" onclick="openInternshipsModal()">
-              <div class="quickbar-icon-box">
-                <i data-lucide="briefcase" class="qb-icon"></i>
-              </div>
-              <div class="quickbar-text">
-                <span class="qb-title">Internships</span>
-                <span class="qb-sub">Find & Apply</span>
-              </div>
-            </div>
-
-            <div class="quickbar-divider"></div>
-
-            <div class="quickbar-item" onclick="scrollToSection('events')">
-              <div class="quickbar-icon-box">
-                <i data-lucide="calendar" class="qb-icon"></i>
-              </div>
-              <div class="quickbar-text">
-                <span class="qb-title">Events</span>
-                <span class="qb-sub">Inside & Outside</span>
-              </div>
-            </div>
-
-            <div class="quickbar-divider"></div>
-
-            <div class="quickbar-item" onclick="openJoinModal()">
-              <div class="quickbar-icon-box">
-                <i data-lucide="users" class="qb-icon"></i>
-              </div>
-              <div class="quickbar-text">
-                <span class="qb-title">Get Involved</span>
-                <span class="qb-sub">Join Our Team</span>
-              </div>
-            </div>
-
-            <div class="quickbar-divider"></div>
-
-            <div class="quickbar-item" onclick="openSuggestModal()">
-              <div class="quickbar-icon-box">
-                <i data-lucide="lightbulb" class="qb-icon"></i>
-              </div>
-              <div class="quickbar-text">
-                <span class="qb-title">Suggest Idea</span>
-                <span class="qb-sub">Share Yours</span>
-              </div>
             </div>
           </div>
         </div>
@@ -1921,12 +2314,12 @@ button {
           </div>
         </div>
 
-        <!-- Events Grid / Track -->
-        <div class="events-carousel-container">
-          <div class="events-track" id="events-track">
+        <!-- Events Marquee Continuous Scrolling Track -->
+        <div class="events-marquee-wrapper">
+          <div class="events-marquee-track" id="events-track">
             
             <!-- Event Card 1: LinkedIn Creation and Optimisation -->
-            <div class="event-card" data-event-id="1">
+            <div class="event-card" data-event-id="1" onclick="openEventDetails(1)">
               <div class="event-type-badge event-badge-purple">WORKSHOP</div>
               <h3 class="event-name">LinkedIn Creation and Optimisation</h3>
               
@@ -1954,14 +2347,14 @@ button {
                   <img src="assets/images/avatars/megha.jpg" alt="Megha" class="avatar-img">
                   <img src="assets/images/avatars/sredha.jpg" alt="Sredha" class="avatar-img">
                 </div>
-                <button class="btn-event-details" onclick="openEventDetails(1)">
+                <button class="btn-event-details">
                   <span>View Details</span>
                 </button>
               </div>
             </div>
 
             <!-- Event Card 2: Industry Connect Orientation -->
-            <div class="event-card" data-event-id="2">
+            <div class="event-card" data-event-id="2" onclick="openEventDetails(2)">
               <div class="event-type-badge event-badge-purple">ORIENTATION</div>
               <h3 class="event-name">Industry Connect Orientation</h3>
               
@@ -1989,14 +2382,14 @@ button {
                   <img src="assets/images/avatars/fathima_kamar.jpg" alt="Fathima" class="avatar-img">
                   <img src="assets/images/avatars/kasinadh.jpg" alt="Kasinadh" class="avatar-img">
                 </div>
-                <button class="btn-event-details" onclick="openEventDetails(2)">
+                <button class="btn-event-details">
                   <span>View Details</span>
                 </button>
               </div>
             </div>
 
             <!-- Event Card 3: Events Will Update Soon -->
-            <div class="event-card" data-event-id="3">
+            <div class="event-card" data-event-id="3" onclick="openEventDetails(3)">
               <div class="event-type-badge event-badge-purple">UPCOMING</div>
               <h3 class="event-name">Events Will Update Soon</h3>
               
@@ -2024,13 +2417,429 @@ button {
                   <img src="assets/images/avatars/pranav_r.jpg" alt="Pranav" class="avatar-img">
                   <img src="assets/images/avatars/pj_nidhi.jpg" alt="Nidhi" class="avatar-img">
                 </div>
-                <button class="btn-event-details" onclick="openEventDetails(3)">
+                <button class="btn-event-details">
+                  <span>View Details</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- DUPLICATE CARDS FOR SEAMLESS MARQUEE LOOP -->
+            <!-- Event Card 1 Duplicate -->
+            <div class="event-card" data-event-id="1" onclick="openEventDetails(1)">
+              <div class="event-type-badge event-badge-purple">WORKSHOP</div>
+              <h3 class="event-name">LinkedIn Creation and Optimisation</h3>
+              
+              <div class="event-meta-list">
+                <div class="meta-row">
+                  <div class="meta-item">
+                    <i data-lucide="calendar" class="meta-icon"></i>
+                    <span>17 August 2026</span>
+                  </div>
+                  <div class="meta-item">
+                    <i data-lucide="clock" class="meta-icon"></i>
+                    <span>10:30 AM</span>
+                  </div>
+                </div>
+                <div class="meta-item">
+                  <i data-lucide="map-pin" class="meta-icon"></i>
+                  <span>TKMIT Seminar Hall</span>
+                </div>
+              </div>
+
+              <div class="event-footer">
+                <div class="avatar-stack">
+                  <img src="assets/images/avatars/rayna.jpg" alt="Rayna" class="avatar-img">
+                  <img src="assets/images/avatars/bilal_s.png" alt="Bilal" class="avatar-img">
+                  <img src="assets/images/avatars/megha.jpg" alt="Megha" class="avatar-img">
+                  <img src="assets/images/avatars/sredha.jpg" alt="Sredha" class="avatar-img">
+                </div>
+                <button class="btn-event-details">
+                  <span>View Details</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Event Card 2 Duplicate -->
+            <div class="event-card" data-event-id="2" onclick="openEventDetails(2)">
+              <div class="event-type-badge event-badge-purple">ORIENTATION</div>
+              <h3 class="event-name">Industry Connect Orientation</h3>
+              
+              <div class="event-meta-list">
+                <div class="meta-row">
+                  <div class="meta-item">
+                    <i data-lucide="calendar" class="meta-icon"></i>
+                    <span>17 August 2026</span>
+                  </div>
+                  <div class="meta-item">
+                    <i data-lucide="clock" class="meta-icon"></i>
+                    <span>2:00 PM</span>
+                  </div>
+                </div>
+                <div class="meta-item">
+                  <i data-lucide="map-pin" class="meta-icon"></i>
+                  <span>College Auditorium</span>
+                </div>
+              </div>
+
+              <div class="event-footer">
+                <div class="avatar-stack">
+                  <img src="assets/images/avatars/ahsan.jpeg" alt="Ahsan" class="avatar-img">
+                  <img src="assets/images/avatars/akashsaji.jpg" alt="Akash" class="avatar-img">
+                  <img src="assets/images/avatars/fathima_kamar.jpg" alt="Fathima" class="avatar-img">
+                  <img src="assets/images/avatars/kasinadh.jpg" alt="Kasinadh" class="avatar-img">
+                </div>
+                <button class="btn-event-details">
+                  <span>View Details</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Event Card 3 Duplicate -->
+            <div class="event-card" data-event-id="3" onclick="openEventDetails(3)">
+              <div class="event-type-badge event-badge-purple">UPCOMING</div>
+              <h3 class="event-name">Events Will Update Soon</h3>
+              
+              <div class="event-meta-list">
+                <div class="meta-row">
+                  <div class="meta-item">
+                    <i data-lucide="calendar" class="meta-icon"></i>
+                    <span>Stay Tuned • 2026</span>
+                  </div>
+                  <div class="meta-item">
+                    <i data-lucide="bell" class="meta-icon"></i>
+                    <span>Upcoming</span>
+                  </div>
+                </div>
+                <div class="meta-item">
+                  <i data-lucide="map-pin" class="meta-icon"></i>
+                  <span>TKMIT Campus</span>
+                </div>
+              </div>
+
+              <div class="event-footer">
+                <div class="avatar-stack">
+                  <img src="assets/images/avatars/muneer.jpg" alt="Muneer" class="avatar-img">
+                  <img src="assets/images/avatars/mariam_aysha.jpg" alt="Mariam" class="avatar-img">
+                  <img src="assets/images/avatars/pranav_r.jpg" alt="Pranav" class="avatar-img">
+                  <img src="assets/images/avatars/pj_nidhi.jpg" alt="Nidhi" class="avatar-img">
+                </div>
+                <button class="btn-event-details">
                   <span>View Details</span>
                 </button>
               </div>
             </div>
 
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED INTERNSHIPS SECTION -->
+    <section class="section-internships" id="internships">
+      <div class="container">
+        
+        <!-- Header -->
+        <div class="internships-header-row">
+          <div class="internships-title-col">
+            <div class="section-badge">
+              <span class="badge-dot"></span>
+              <span class="badge-text">Career & Opportunities</span>
+            </div>
+            <h2 class="section-title">Featured Industry Internships</h2>
+            <p style="color: #64748b; font-size: 0.95rem; margin-top: 6px;">Verified industry internships & live projects curated exclusively for TKMIT students.</p>
+          </div>
+
+          <button class="btn-primary" onclick="openInternshipsModal()">
+            <span>View All Internships</span>
+            <i data-lucide="arrow-right" class="btn-icon"></i>
+          </button>
+        </div>
+
+        <!-- Internships Cards Grid -->
+        <div class="internships-grid">
+          
+          <!-- Internship 1 -->
+          <div class="internship-card">
+            <div class="internship-card-top">
+              <div class="company-badge">
+                <i data-lucide="code-2"></i>
+                <span>Software & Cloud</span>
+              </div>
+              <span class="intern-badge-verified">
+                <i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verified
+              </span>
+            </div>
+            
+            <h3 class="intern-title">Full-Stack Web & Cloud Developer</h3>
+            <p class="intern-company-name">
+              <i data-lucide="building" style="width: 15px; height: 15px;"></i> CloudScale Tech Labs
+            </p>
+
+            <div class="intern-meta-grid">
+              <div class="intern-meta-item">
+                <i data-lucide="map-pin"></i>
+                <span>Remote / Hybrid</span>
+              </div>
+              <div class="intern-meta-item">
+                <i data-lucide="clock"></i>
+                <span>3 – 6 Months</span>
+              </div>
+            </div>
+
+            <div class="intern-tags-list">
+              <span class="intern-tag">React.js</span>
+              <span class="intern-tag">Node.js</span>
+              <span class="intern-tag">PostgreSQL</span>
+              <span class="intern-tag">AWS</span>
+            </div>
+
+            <div class="intern-card-footer">
+              <div class="intern-stipend-box">
+                <span class="intern-stipend-label">Stipend</span>
+                <span class="intern-stipend-amount">₹18,000 – ₹25,000 / mo</span>
+              </div>
+              <button class="btn-apply-intern" onclick="openJoinModal()">
+                <span>Apply Now</span>
+                <i data-lucide="send" style="width: 14px; height: 14px;"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Internship 2 -->
+          <div class="internship-card">
+            <div class="internship-card-top">
+              <div class="company-badge">
+                <i data-lucide="brain"></i>
+                <span>AI & Research</span>
+              </div>
+              <span class="intern-badge-verified">
+                <i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verified
+              </span>
+            </div>
+            
+            <h3 class="intern-title">AI / Machine Learning Research Intern</h3>
+            <p class="intern-company-name">
+              <i data-lucide="building" style="width: 15px; height: 15px;"></i> Cognitive Neural Systems
+            </p>
+
+            <div class="intern-meta-grid">
+              <div class="intern-meta-item">
+                <i data-lucide="map-pin"></i>
+                <span>Hybrid (Kochi)</span>
+              </div>
+              <div class="intern-meta-item">
+                <i data-lucide="clock"></i>
+                <span>6 Months</span>
+              </div>
+            </div>
+
+            <div class="intern-tags-list">
+              <span class="intern-tag">Python</span>
+              <span class="intern-tag">PyTorch</span>
+              <span class="intern-tag">LLMs</span>
+              <span class="intern-tag">Computer Vision</span>
+            </div>
+
+            <div class="intern-card-footer">
+              <div class="intern-stipend-box">
+                <span class="intern-stipend-label">Stipend</span>
+                <span class="intern-stipend-amount">₹20,000 – ₹30,000 / mo</span>
+              </div>
+              <button class="btn-apply-intern" onclick="openJoinModal()">
+                <span>Apply Now</span>
+                <i data-lucide="send" style="width: 14px; height: 14px;"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Internship 3 -->
+          <div class="internship-card">
+            <div class="internship-card-top">
+              <div class="company-badge">
+                <i data-lucide="palette"></i>
+                <span>UI/UX & Product</span>
+              </div>
+              <span class="intern-badge-verified">
+                <i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verified
+              </span>
+            </div>
+            
+            <h3 class="intern-title">UI/UX & Product Design Intern</h3>
+            <p class="intern-company-name">
+              <i data-lucide="building" style="width: 15px; height: 15px;"></i> DesignPulse Studio
+            </p>
+
+            <div class="intern-meta-grid">
+              <div class="intern-meta-item">
+                <i data-lucide="map-pin"></i>
+                <span>Remote</span>
+              </div>
+              <div class="intern-meta-item">
+                <i data-lucide="clock"></i>
+                <span>3 Months</span>
+              </div>
+            </div>
+
+            <div class="intern-tags-list">
+              <span class="intern-tag">Figma</span>
+              <span class="intern-tag">Design Systems</span>
+              <span class="intern-tag">Prototyping</span>
+              <span class="intern-tag">User Research</span>
+            </div>
+
+            <div class="intern-card-footer">
+              <div class="intern-stipend-box">
+                <span class="intern-stipend-label">Stipend</span>
+                <span class="intern-stipend-amount">₹12,000 – ₹18,000 / mo</span>
+              </div>
+              <button class="btn-apply-intern" onclick="openJoinModal()">
+                <span>Apply Now</span>
+                <i data-lucide="send" style="width: 14px; height: 14px;"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Internship 4 -->
+          <div class="internship-card">
+            <div class="internship-card-top">
+              <div class="company-badge">
+                <i data-lucide="cpu"></i>
+                <span>Hardware & Embedded</span>
+              </div>
+              <span class="intern-badge-verified">
+                <i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verified
+              </span>
+            </div>
+            
+            <h3 class="intern-title">IoT & Embedded Systems Engineer</h3>
+            <p class="intern-company-name">
+              <i data-lucide="building" style="width: 15px; height: 15px;"></i> NexGen Robotics & IoT
+            </p>
+
+            <div class="intern-meta-grid">
+              <div class="intern-meta-item">
+                <i data-lucide="map-pin"></i>
+                <span>On-Site (Kollam)</span>
+              </div>
+              <div class="intern-meta-item">
+                <i data-lucide="clock"></i>
+                <span>4 Months</span>
+              </div>
+            </div>
+
+            <div class="intern-tags-list">
+              <span class="intern-tag">Embedded C/C++</span>
+              <span class="intern-tag">ESP32</span>
+              <span class="intern-tag">RTOS</span>
+              <span class="intern-tag">PCB Design</span>
+            </div>
+
+            <div class="intern-card-footer">
+              <div class="intern-stipend-box">
+                <span class="intern-stipend-label">Stipend</span>
+                <span class="intern-stipend-amount">₹15,000 – ₹22,000 / mo</span>
+              </div>
+              <button class="btn-apply-intern" onclick="openJoinModal()">
+                <span>Apply Now</span>
+                <i data-lucide="send" style="width: 14px; height: 14px;"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Internship 5 -->
+          <div class="internship-card">
+            <div class="internship-card-top">
+              <div class="company-badge">
+                <i data-lucide="server"></i>
+                <span>DevOps & Security</span>
+              </div>
+              <span class="intern-badge-verified">
+                <i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verified
+              </span>
+            </div>
+            
+            <h3 class="intern-title">DevOps & Cloud Security Intern</h3>
+            <p class="intern-company-name">
+              <i data-lucide="building" style="width: 15px; height: 15px;"></i> InfraShield Global
+            </p>
+
+            <div class="intern-meta-grid">
+              <div class="intern-meta-item">
+                <i data-lucide="map-pin"></i>
+                <span>Remote</span>
+              </div>
+              <div class="intern-meta-item">
+                <i data-lucide="clock"></i>
+                <span>6 Months</span>
+              </div>
+            </div>
+
+            <div class="intern-tags-list">
+              <span class="intern-tag">Docker</span>
+              <span class="intern-tag">Kubernetes</span>
+              <span class="intern-tag">CI/CD</span>
+              <span class="intern-tag">Linux</span>
+            </div>
+
+            <div class="intern-card-footer">
+              <div class="intern-stipend-box">
+                <span class="intern-stipend-label">Stipend</span>
+                <span class="intern-stipend-amount">₹16,000 – ₹24,000 / mo</span>
+              </div>
+              <button class="btn-apply-intern" onclick="openJoinModal()">
+                <span>Apply Now</span>
+                <i data-lucide="send" style="width: 14px; height: 14px;"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Internship 6 -->
+          <div class="internship-card">
+            <div class="internship-card-top">
+              <div class="company-badge">
+                <i data-lucide="share-2"></i>
+                <span>Growth & Outreach</span>
+              </div>
+              <span class="intern-badge-verified">
+                <i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verified
+              </span>
+            </div>
+            
+            <h3 class="intern-title">Technical Content & Community Strategist</h3>
+            <p class="intern-company-name">
+              <i data-lucide="building" style="width: 15px; height: 15px;"></i> Industry Connect Network
+            </p>
+
+            <div class="intern-meta-grid">
+              <div class="intern-meta-item">
+                <i data-lucide="map-pin"></i>
+                <span>Remote / Campus</span>
+              </div>
+              <div class="intern-meta-item">
+                <i data-lucide="clock"></i>
+                <span>3 Months</span>
+              </div>
+            </div>
+
+            <div class="intern-tags-list">
+              <span class="intern-tag">Technical Writing</span>
+              <span class="intern-tag">Public Relations</span>
+              <span class="intern-tag">SEO</span>
+              <span class="intern-tag">Media</span>
+            </div>
+
+            <div class="intern-card-footer">
+              <div class="intern-stipend-box">
+                <span class="intern-stipend-label">Stipend</span>
+                <span class="intern-stipend-amount">₹10,000 – ₹15,000 / mo</span>
+              </div>
+              <button class="btn-apply-intern" onclick="openJoinModal()">
+                <span>Apply Now</span>
+                <i data-lucide="send" style="width: 14px; height: 14px;"></i>
+              </button>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -2155,6 +2964,162 @@ button {
 
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <!-- HORIZONTAL PINNED GALLERY SECTION (BIJWAL REFERENCE STYLE) -->
+    <section class="section-gallery" id="gallery">
+      <div class="gallery-scroll-container">
+        <div class="gallery-sticky-wrapper">
+          
+          <!-- Gallery Top Header -->
+          <div class="gallery-header-row">
+            <div>
+              <div class="gallery-badge">
+                <span class="badge-dot" style="background: #818cf8;"></span>
+                <span>Campus Moments & Highlights</span>
+              </div>
+              <h2 class="gallery-title">Life at Industry Connect</h2>
+            </div>
+            <p class="gallery-subtext">
+              Glimpses from technical hackathons, industry masterclasses, team orientations, and hands-on laboratory workshops at TKMIT.
+            </p>
+          </div>
+
+          <!-- Gallery Horizontal Scroll Track -->
+          <div class="gallery-horizontal-track" id="gallery-horizontal-track">
+            
+            <!-- Gallery Card 1 -->
+            <div class="gallery-card">
+              <div class="gallery-img-inner">
+                <img src="about/rec/tkmit_building.jpg" alt="TKMIT Campus Hub" loading="lazy">
+                <div class="gallery-hover-overlay">
+                  <span>Explore Photo</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </div>
+              </div>
+              <div class="gallery-card-info">
+                <h4>TKMIT Campus & Innovation Hub</h4>
+                <p>Kollam, Kerala • 2026</p>
+              </div>
+            </div>
+
+            <!-- Gallery Card 2 -->
+            <div class="gallery-card">
+              <div class="gallery-img-inner">
+                <img src="assets/images/hero-banner.png" alt="Auditorium Orientation" loading="lazy">
+                <div class="gallery-hover-overlay">
+                  <span>Explore Photo</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </div>
+              </div>
+              <div class="gallery-card-info">
+                <h4>Orientation & Industry Summit</h4>
+                <p>Auditorium Gathering</p>
+              </div>
+            </div>
+
+            <!-- Gallery Card 3 -->
+            <div class="gallery-card">
+              <div class="gallery-img-inner">
+                <img src="about/rec/ChatGPT Image Jun 23, 2026, 05_49_18 PM.png" alt="Tech Workshop Lab" loading="lazy">
+                <div class="gallery-hover-overlay">
+                  <span>Explore Photo</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </div>
+              </div>
+              <div class="gallery-card-info">
+                <h4>AI & Cloud Coding Marathon</h4>
+                <p>36-Hour Hackathon Sprint</p>
+              </div>
+            </div>
+
+            <!-- Gallery Card 4 -->
+            <div class="gallery-card">
+              <div class="gallery-img-inner">
+                <img src="reference/ChatGPT Image Aug 17, 2026, 12_14_06 AM.png" alt="Leadership Execom" loading="lazy">
+                <div class="gallery-hover-overlay">
+                  <span>Explore Photo</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </div>
+              </div>
+              <div class="gallery-card-info">
+                <h4>Executive Committee 2026-27</h4>
+                <p>Leadership Meet & Planning</p>
+              </div>
+            </div>
+
+            <!-- Gallery Card 5 -->
+            <div class="gallery-card">
+              <div class="gallery-img-inner">
+                <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" alt="Tech Masterclass" loading="lazy">
+                <div class="gallery-hover-overlay">
+                  <span>Explore Photo</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </div>
+              </div>
+              <div class="gallery-card-info">
+                <h4>Hands-On Technical Workshop</h4>
+                <p>Web Development & Git Bootcamp</p>
+              </div>
+            </div>
+
+            <!-- Gallery Card 6 -->
+            <div class="gallery-card">
+              <div class="gallery-img-inner">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Design Sprint" loading="lazy">
+                <div class="gallery-hover-overlay">
+                  <span>Explore Photo</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </div>
+              </div>
+              <div class="gallery-card-info">
+                <h4>UI/UX & Product Design Sprint</h4>
+                <p>Figma & Prototyping Lab</p>
+              </div>
+            </div>
+
+            <!-- Gallery Card 7 -->
+            <div class="gallery-card">
+              <div class="gallery-img-inner">
+                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80" alt="Auditorium Keynote" loading="lazy">
+                <div class="gallery-hover-overlay">
+                  <span>Explore Photo</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </div>
+              </div>
+              <div class="gallery-card-info">
+                <h4>Industry Leaders Talk Series</h4>
+                <p>Keynotes from Tech Founders</p>
+              </div>
+            </div>
+
+            <!-- Gallery Card 8: Final CTA Card -->
+            <div class="gallery-cta-card">
+              <h3>Be Part of the Future</h3>
+              <p>Join Industry Connect TKMIT today to collaborate on groundbreaking projects, attend premier events, and accelerate your career.</p>
+              <button class="btn-primary" onclick="openJoinModal()" style="background: #ffffff; color: #5842eb; font-weight: 800; padding: 14px 28px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+                <span>Join Our Team</span>
+                <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+              </button>
+            </div>
+
+          </div>
         </div>
       </div>
     </section>

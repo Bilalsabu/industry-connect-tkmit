@@ -59,7 +59,58 @@ document.addEventListener('DOMContentLoaded', () => {
   setupScrollSpy();
   setupCarousel();
   setupScrollEffects();
+  initHorizontalGallery();
 });
+
+/* ==========================================================================
+   Horizontal Pinned Scrolling Gallery (Bijwal Reference Style)
+   ========================================================================== */
+function initHorizontalGallery() {
+  const container = document.querySelector('.gallery-scroll-container');
+  const stickyWrapper = document.querySelector('.gallery-sticky-wrapper');
+  const track = document.querySelector('.gallery-horizontal-track');
+
+  if (!container || !stickyWrapper || !track) return;
+
+  function updateGalleryScroll() {
+    if (window.innerWidth <= 1024) {
+      track.style.transform = '';
+      const images = track.querySelectorAll('.gallery-img-inner img');
+      images.forEach(img => img.style.transform = '');
+      return;
+    }
+
+    const containerRect = container.getBoundingClientRect();
+    const viewHeight = window.innerHeight;
+    const containerHeight = containerRect.height;
+
+    const scrolled = -containerRect.top;
+    const totalScrollable = containerHeight - viewHeight;
+
+    if (totalScrollable <= 0) return;
+
+    let progress = scrolled / totalScrollable;
+    progress = Math.max(0, Math.min(1, progress));
+
+    const trackWidth = track.scrollWidth;
+    const viewWidth = window.innerWidth;
+    const maxTranslation = trackWidth - viewWidth + 80;
+    const xTranslation = -progress * maxTranslation;
+
+    track.style.transform = `translateX(${xTranslation}px)`;
+
+    // Parallax effect on card images
+    const images = track.querySelectorAll('.gallery-img-inner img');
+    images.forEach(img => {
+      const parallaxOffset = (0.5 - progress) * 36;
+      img.style.transform = `translateX(${parallaxOffset}px)`;
+    });
+  }
+
+  window.addEventListener('scroll', updateGalleryScroll, { passive: true });
+  window.addEventListener('resize', updateGalleryScroll, { passive: true });
+  updateGalleryScroll();
+}
 
 // Parallax Hero Zoom & Dynamic Navbar Auto-Hide on Scroll Down / Reveal on Scroll Up
 let lastScrollY = window.scrollY;
