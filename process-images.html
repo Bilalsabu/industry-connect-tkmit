@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head><title>Process Images</title></head>
+<body>
+<h1>Processing Transparent PNGs...</h1>
+<div id="status">Starting...</div>
+<script>
+const imagesToProcess = [
+  { src: 'assets/images/3d-briefcase.jpg', out: '3d-briefcase.png', threshold: 238 },
+  { src: 'assets/images/3d-calendar.jpg', out: '3d-calendar.png', threshold: 235 },
+  { src: 'assets/images/3d-team.jpg', out: '3d-team.png', threshold: 235 },
+  { src: 'assets/images/3d-lightbulb.jpg', out: '3d-lightbulb.png', threshold: 240 },
+  { src: 'assets/images/3d-people.jpg', out: '3d-people.png', threshold: 236 },
+  { src: 'assets/images/ref-logo.jpg', out: 'ref-logo.png', threshold: 240 }
+];
+
+async function processAll() {
+  const status = document.getElementById('status');
+  for (const item of imagesToProcess) {
+    status.textContent = `Processing ${item.src}...`;
+    await processOne(item);
+  }
+  status.textContent = 'All images processed and saved as transparent PNGs!';
+}
+
+function processOne(item) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = async () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+
+      const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const data = imgData.data;
+
+      // Sample corner color
+      const bgR = data[0];
+      const bgG = data[1];
+      const bgB = data[2];
+
+      for (let i = 0; i < data.length; i += 4) {
+        const r = data[i];
+        const g = data[i+1];
+        const b = data[i+2];
+
+        const max = Math.max(r, g, b);
+        const min = Math.min(r, g, b);
+        const sat = max === 0 ? 0 : (max - min) / max;
+        const brightness = 0.299 * r + 0.587 * g + 0.114 * b;
+        
+        // Euclidean distance from background corner
+        const dist = Math.sqrt((r - bgR)**2 + (g - bgG)**2 + (b - bgB)**2);
+
+        // If pixel is low saturation (gray/off-white background) and bright, or close to corner
+        if ((sat < 0.15 && brightness > 180) || brightness > 235 || dist < 45) {
+          if (brightness > 220 || dist < 30) {
+            data[i+3] = 0; // 100% transparent
+          } else {
+            // Feathered edge
+            const alpha = Math.max(0, Math.min(1, (220 - brightness) / 40));
+            data[i+3] = Math.round(alpha * 255);
+          }
+        }
+      }
+
+      ctx.putImageData(imgData, 0, 0);
+      const dataUrl = canvas.toDataURL('image/png');
+
+      await fetch('/save-image', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ filename: item.out, data: dataUrl })
+      });
+
+      resolve();
+    };
+    img.src = item.src + '?t=' + Date.now();
+  });
+}
+
+processAll();
+</script>
+</body>
+</html>

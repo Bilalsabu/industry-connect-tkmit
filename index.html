@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Industry Connect TKMIT | Bridging Students & Industry</title>
+  <meta name="description" content="Explore opportunities, connect with industry leaders, attend premier events, and accelerate your career with Industry Connect TKMIT.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand-logo" id="nav-brand" aria-label="Industry Connect TKMIT">
+        <img src="assets/images/ref-logo.png" alt="Industry Connect TKMIT" class="brand-logo-img">
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#hero" class="nav-link active" data-nav="home">Home</a>
+        <a href="#internships" class="nav-link" data-nav="internships">Internships</a>
+        <a href="#events" class="nav-link" data-nav="events">Events</a>
+        <a href="#get-involved" class="nav-link" data-nav="get-involved">Get Involved</a>
+        <a href="#suggest-idea" class="nav-link" data-nav="suggest-idea">Suggest Idea</a>
+        <a href="about page/ic web/index.html" class="nav-link" data-nav="about">About Us</a>
+      </nav>
+
+      <!-- Nav CTA & Mobile Toggle -->
+      <div class="nav-actions">
+        <button class="btn-join-us" id="btn-join-nav" onclick="openJoinModal()">
+          <span>Join Us</span>
+          <i data-lucide="arrow-right" class="btn-icon"></i>
+        </button>
+        <button class="mobile-menu-btn" id="mobile-toggle" aria-label="Toggle navigation menu">
+          <i data-lucide="menu" id="menu-icon"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer">
+      <nav class="mobile-nav-links">
+        <a href="#hero" class="mobile-link active" onclick="closeMobileMenu()">Home</a>
+        <a href="#internships" class="mobile-link" onclick="closeMobileMenu()">Internships</a>
+        <a href="#events" class="mobile-link" onclick="closeMobileMenu()">Events</a>
+        <a href="#get-involved" class="mobile-link" onclick="closeMobileMenu()">Get Involved</a>
+        <a href="#suggest-idea" class="mobile-link" onclick="closeMobileMenu()">Suggest Idea</a>
+        <a href="about page/ic web/index.html" class="mobile-link">About Us</a>
+      </nav>
+      <div class="mobile-drawer-cta">
+        <button class="btn-join-us w-full" onclick="closeMobileMenu(); openJoinModal();">
+          <span>Join Us</span>
+          <i data-lucide="arrow-right" class="btn-icon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="container">
+        <div class="hero-card">
+          <!-- Hero Background Image -->
+          <div class="hero-bg" style="background-image: url('assets/images/hero-banner.png');">
+            <div class="hero-overlay"></div>
+          </div>
+
+          <!-- Hero Content -->
+          <div class="hero-content">
+            <div class="hero-badge">
+              <span class="badge-dot"></span>
+              <span class="badge-text">Home • Students • Future • Connected</span>
+            </div>
+
+            <h1 class="hero-headline">
+              Every step today,<br>
+              leads to <span class="gradient-text">tomorrow.</span>
+            </h1>
+
+            <p class="hero-description">
+              Explore opportunities, connect with industry, attend events, and build your future with Industry Connect TKMIT.
+            </p>
+
+            <div class="hero-cta-group">
+              <button class="btn-primary" id="hero-explore-btn" onclick="scrollToSection('features')">
+                <span>Explore Opportunities</span>
+                <i data-lucide="arrow-right" class="btn-icon"></i>
+              </button>
+              <button class="btn-secondary" id="hero-learn-btn" onclick="openAboutModal()">
+                <span>Learn More</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Quick Action Bar -->
+          <div class="hero-quickbar">
+            <div class="quickbar-item" onclick="openInternshipsModal()">
+              <div class="quickbar-icon-box">
+                <i data-lucide="briefcase" class="qb-icon"></i>
+              </div>
+              <div class="quickbar-text">
+                <span class="qb-title">Internships</span>
+                <span class="qb-sub">Find & Apply</span>
+              </div>
+            </div>
+
+            <div class="quickbar-divider"></div>
+
+            <div class="quickbar-item" onclick="scrollToSection('events')">
+              <div class="quickbar-icon-box">
+                <i data-lucide="calendar" class="qb-icon"></i>
+              </div>
+              <div class="quickbar-text">
+                <span class="qb-title">Events</span>
+                <span class="qb-sub">Inside & Outside</span>
+              </div>
+            </div>
+
+            <div class="quickbar-divider"></div>
+
+            <div class="quickbar-item" onclick="openJoinModal()">
+              <div class="quickbar-icon-box">
+                <i data-lucide="users" class="qb-icon"></i>
+              </div>
+              <div class="quickbar-text">
+                <span class="qb-title">Get Involved</span>
+                <span class="qb-sub">Join Our Team</span>
+              </div>
+            </div>
+
+            <div class="quickbar-divider"></div>
+
+            <div class="quickbar-item" onclick="openSuggestModal()">
+              <div class="quickbar-icon-box">
+                <i data-lucide="lightbulb" class="qb-icon"></i>
+              </div>
+              <div class="quickbar-text">
+                <span class="qb-title">Suggest Idea</span>
+                <span class="qb-sub">Share Yours</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE 4 FEATURE CARDS (2x2 Grid) -->
+    <section class="section-features" id="features">
+      <div class="container">
+        <div class="features-grid">
+          
+          <!-- Card 1: Internships -->
+          <div class="feature-card" id="card-internships" onclick="openInternshipsModal()">
+            <div class="feature-content">
+              <div class="feature-icon-badge">
+                <i data-lucide="briefcase"></i>
+              </div>
+              <h3 class="feature-title">Internships</h3>
+              <p class="feature-desc">Discover and apply to verified internships from top companies.</p>
+              <div class="feature-action-btn" aria-label="Explore Internships">
+                <i data-lucide="arrow-right"></i>
+              </div>
+            </div>
+            <div class="feature-visual">
+              <img src="assets/images/3d-briefcase.png" alt="3D Briefcase Illustration" class="feature-3d-img">
+            </div>
+          </div>
+
+          <!-- Card 2: Events -->
+          <div class="feature-card" id="card-events" onclick="scrollToSection('events')">
+            <div class="feature-content">
+              <div class="feature-icon-badge">
+                <i data-lucide="calendar"></i>
+              </div>
+              <h3 class="feature-title">Events</h3>
+              <p class="feature-desc">Stay updated with upcoming events, workshops and guest talks.</p>
+              <div class="feature-action-btn" aria-label="Explore Events">
+                <i data-lucide="arrow-right"></i>
+              </div>
+            </div>
+            <div class="feature-visual">
+              <img src="assets/images/3d-calendar.png" alt="3D Calendar Illustration" class="feature-3d-img">
+            </div>
+          </div>
+
+          <!-- Card 3: Join the Team -->
+          <div class="feature-card" id="card-team" onclick="openJoinModal()">
+            <div class="feature-content">
+              <div class="feature-icon-badge">
+                <i data-lucide="users"></i>
+              </div>
+              <h3 class="feature-title">Join the Team</h3>
+              <p class="feature-desc">Work hands-on with Industry Connect and build leadership skills.</p>
+              <div class="feature-action-btn" aria-label="Join our Team">
+                <i data-lucide="arrow-right"></i>
+              </div>
+            </div>
+            <div class="feature-visual">
+              <img src="assets/images/3d-team.png" alt="3D Team Illustration" class="feature-3d-img">
+            </div>
+          </div>
+
+          <!-- Card 4: Suggest an Idea -->
+          <div class="feature-card" id="card-suggest" onclick="openSuggestModal()">
+            <div class="feature-content">
+              <div class="feature-icon-badge">
+                <i data-lucide="lightbulb"></i>
+              </div>
+              <h3 class="feature-title">Suggest an Idea</h3>
+              <p class="feature-desc">Have an idea for a workshop, talk or event? Let's make it happen!</p>
+              <div class="feature-action-btn" aria-label="Suggest Idea">
+                <i data-lucide="arrow-right"></i>
+              </div>
+            </div>
+            <div class="feature-visual">
+              <img src="assets/images/3d-lightbulb.png" alt="3D Glowing Lightbulb" class="feature-3d-img">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT'S COMING UP (EVENTS CAROUSEL / GRID) -->
+    <section class="section-events" id="events">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="events-header-row">
+          <div class="events-title-col">
+            <div class="section-badge">
+              <span class="badge-dot"></span>
+              <span class="badge-text">Upcoming Highlights</span>
+            </div>
+            <h2 class="section-title">What's Coming Up</h2>
+          </div>
+
+          <div class="events-nav-col">
+            <a href="javascript:void(0)" class="view-all-link" onclick="openAllEventsModal()">
+              <span>View all</span>
+              <i data-lucide="arrow-right"></i>
+            </a>
+            <div class="carousel-arrows">
+              <button class="carousel-arrow prev-arrow" id="event-prev-btn" aria-label="Previous events">
+                <i data-lucide="chevron-left"></i>
+              </button>
+              <button class="carousel-arrow next-arrow" id="event-next-btn" aria-label="Next events">
+                <i data-lucide="chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Events Grid / Track -->
+        <div class="events-carousel-container">
+          <div class="events-track" id="events-track">
+            
+            <!-- Event Card 1: LinkedIn Creation and Optimisation -->
+            <div class="event-card" data-event-id="1">
+              <div class="event-type-badge event-badge-purple">WORKSHOP</div>
+              <h3 class="event-name">LinkedIn Creation and Optimisation</h3>
+              
+              <div class="event-meta-list">
+                <div class="meta-row">
+                  <div class="meta-item">
+                    <i data-lucide="calendar" class="meta-icon"></i>
+                    <span>17 August 2026</span>
+                  </div>
+                  <div class="meta-item">
+                    <i data-lucide="clock" class="meta-icon"></i>
+                    <span>10:30 AM</span>
+                  </div>
+                </div>
+                <div class="meta-item">
+                  <i data-lucide="map-pin" class="meta-icon"></i>
+                  <span>TKMIT Seminar Hall</span>
+                </div>
+              </div>
+
+              <div class="event-footer">
+                <div class="avatar-stack">
+                  <img src="assets/images/avatars/rayna.jpg" alt="Rayna" class="avatar-img">
+                  <img src="assets/images/avatars/bilal_s.png" alt="Bilal" class="avatar-img">
+                  <img src="assets/images/avatars/megha.jpg" alt="Megha" class="avatar-img">
+                  <img src="assets/images/avatars/sredha.jpg" alt="Sredha" class="avatar-img">
+                </div>
+                <button class="btn-event-details" onclick="openEventDetails(1)">
+                  <span>View Details</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Event Card 2: Industry Connect Orientation -->
+            <div class="event-card" data-event-id="2">
+              <div class="event-type-badge event-badge-purple">ORIENTATION</div>
+              <h3 class="event-name">Industry Connect Orientation</h3>
+              
+              <div class="event-meta-list">
+                <div class="meta-row">
+                  <div class="meta-item">
+                    <i data-lucide="calendar" class="meta-icon"></i>
+                    <span>17 August 2026</span>
+                  </div>
+                  <div class="meta-item">
+                    <i data-lucide="clock" class="meta-icon"></i>
+                    <span>2:00 PM</span>
+                  </div>
+                </div>
+                <div class="meta-item">
+                  <i data-lucide="map-pin" class="meta-icon"></i>
+                  <span>College Auditorium</span>
+                </div>
+              </div>
+
+              <div class="event-footer">
+                <div class="avatar-stack">
+                  <img src="assets/images/avatars/ahsan.jpeg" alt="Ahsan" class="avatar-img">
+                  <img src="assets/images/avatars/akashsaji.jpg" alt="Akash" class="avatar-img">
+                  <img src="assets/images/avatars/fathima_kamar.jpg" alt="Fathima" class="avatar-img">
+                  <img src="assets/images/avatars/kasinadh.jpg" alt="Kasinadh" class="avatar-img">
+                </div>
+                <button class="btn-event-details" onclick="openEventDetails(2)">
+                  <span>View Details</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Event Card 3: Events Will Update Soon -->
+            <div class="event-card" data-event-id="3">
+              <div class="event-type-badge event-badge-purple">UPCOMING</div>
+              <h3 class="event-name">Events Will Update Soon</h3>
+              
+              <div class="event-meta-list">
+                <div class="meta-row">
+                  <div class="meta-item">
+                    <i data-lucide="calendar" class="meta-icon"></i>
+                    <span>Stay Tuned • 2026</span>
+                  </div>
+                  <div class="meta-item">
+                    <i data-lucide="bell" class="meta-icon"></i>
+                    <span>Upcoming</span>
+                  </div>
+                </div>
+                <div class="meta-item">
+                  <i data-lucide="map-pin" class="meta-icon"></i>
+                  <span>TKMIT Campus</span>
+                </div>
+              </div>
+
+              <div class="event-footer">
+                <div class="avatar-stack">
+                  <img src="assets/images/avatars/muneer.jpg" alt="Muneer" class="avatar-img">
+                  <img src="assets/images/avatars/mariam_aysha.jpg" alt="Mariam" class="avatar-img">
+                  <img src="assets/images/avatars/pranav_r.jpg" alt="Pranav" class="avatar-img">
+                  <img src="assets/images/avatars/pj_nidhi.jpg" alt="Nidhi" class="avatar-img">
+                </div>
+                <button class="btn-event-details" onclick="openEventDetails(3)">
+                  <span>View Details</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DUAL SPLIT HIGHLIGHT BANNERS -->
+    <section class="section-split-banners" id="community">
+      <div class="container">
+        <div class="split-grid">
+          
+          <!-- Banner 1: Meet the People Behind This -->
+          <div class="banner-card banner-light">
+            <div class="banner-content">
+              <div class="section-badge badge-light-theme">
+                <span class="badge-dot"></span>
+                <span class="badge-text">About Us</span>
+              </div>
+              <h3 class="banner-heading">Meet the People Behind This</h3>
+              <p class="banner-description">
+                Learn more about Industry Connect, our mission, and the executive committee team.
+              </p>
+              <a href="about page/ic web/index.html" class="btn-dark-pill">
+                <span>Explore About Us</span>
+                <i data-lucide="arrow-right"></i>
+              </a>
+            </div>
+            <div class="banner-graphic">
+              <img src="assets/images/3d-people.png" alt="Meet Our Team 3D Graphic" class="banner-3d-img">
+            </div>
+          </div>
+
+          <!-- Banner 2: More Than Events. We're a Community -->
+          <div class="banner-card banner-purple">
+            <div class="banner-content">
+              <div class="section-badge badge-glass-white">
+                <span class="badge-dot dot-white"></span>
+                <span class="badge-text">Community</span>
+              </div>
+              <h3 class="banner-heading text-white">More Than Events. We're a Community.</h3>
+              <p class="banner-description text-white-80">
+                Collaborate, learn, share and grow together with like-minded peers and mentors.
+              </p>
+              <button class="btn-white-pill" onclick="openCommunityModal()">
+                <span>Join Our Community</span>
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+            <div class="banner-graphic">
+              <img src="assets/images/3d-community.jpg" alt="Community Network 3D Graphic" class="banner-3d-img banner-glow">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- STAY CONNECTED SECTION -->
+    <section class="section-social" id="social-hub">
+      <div class="container">
+        <div class="social-layout-grid">
+          
+          <!-- Left Header Column -->
+          <div class="social-intro-col">
+            <div class="section-badge">
+              <span class="badge-dot"></span>
+              <span class="badge-text">Stay Connected</span>
+            </div>
+            <h2 class="social-heading">Let's Stay Connected</h2>
+            <p class="social-subtext">
+              Join our channels and never miss updates, opportunities and exciting moments.
+            </p>
+          </div>
+
+          <!-- Right 3 Social Cards -->
+          <div class="social-cards-grid">
+            
+            <!-- Instagram -->
+            <div class="social-card social-card-instagram">
+              <div class="social-card-icon-wrap icon-ig">
+                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </div>
+              <h4 class="social-card-name">Instagram</h4>
+              <span class="social-card-handle">@industryconnect.tkmit</span>
+              <p class="social-card-desc">Updates, highlights & reels</p>
+              <a href="https://instagram.com/industryconnect.tkmit" target="_blank" rel="noopener noreferrer" class="btn-social-action btn-instagram">
+                Follow Us
+              </a>
+            </div>
+
+            <!-- WhatsApp Group -->
+            <div class="social-card social-card-whatsapp">
+              <div class="social-card-icon-wrap icon-wa">
+                <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                </svg>
+              </div>
+              <h4 class="social-card-name">WhatsApp Group</h4>
+              <span class="social-card-handle">Join our community</span>
+              <p class="social-card-desc">Stay updated in real-time</p>
+              <a href="https://chat.whatsapp.com" target="_blank" rel="noopener noreferrer" class="btn-social-action btn-whatsapp">
+                Join Group
+              </a>
+            </div>
+
+            <!-- LinkedIn -->
+            <div class="social-card social-card-linkedin">
+              <div class="social-card-icon-wrap icon-li">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+              </div>
+              <h4 class="social-card-name">LinkedIn</h4>
+              <span class="social-card-handle">Industry Connect TKMIT</span>
+              <p class="social-card-desc">Professional updates & more</p>
+              <a href="https://linkedin.com/company/industry-connect-tkmit" target="_blank" rel="noopener noreferrer" class="btn-social-action btn-linkedin">
+                Follow Us
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        
+        <!-- Brand / About Column -->
+        <div class="footer-col-brand">
+          <div class="footer-logo">
+            <img src="assets/images/ref-logo.png" alt="Industry Connect TKMIT" class="brand-logo-img-footer">
+          </div>
+          <p class="footer-mission">
+            Bridging the gap between students and industry through opportunities, collaboration and growth.
+          </p>
+        </div>
+
+        <!-- Quick Links Column -->
+        <div class="footer-col">
+          <h5 class="footer-col-title">Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="#internships" onclick="openInternshipsModal()">Internships</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#get-involved" onclick="openJoinModal()">Get Involved</a></li>
+            <li><a href="#suggest-idea" onclick="openSuggestModal()">Suggest Idea</a></li>
+            <li><a href="about page/ic web/index.html">About Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources Column -->
+        <div class="footer-col">
+          <h5 class="footer-col-title">Resources</h5>
+          <ul class="footer-links">
+            <li><a href="javascript:void(0)" onclick="openResourceModal('Blog')">Blog</a></li>
+            <li><a href="javascript:void(0)" onclick="openResourceModal('Gallery')">Gallery</a></li>
+            <li><a href="javascript:void(0)" onclick="openResourceModal('FAQs')">FAQs</a></li>
+            <li><a href="javascript:void(0)" onclick="openResourceModal('Contact Us')">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Connect Column -->
+        <div class="footer-col">
+          <h5 class="footer-col-title">Connect With Us</h5>
+          <div class="footer-social-icons">
+            <a href="https://instagram.com/industryconnect.tkmit" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram">
+              <i data-lucide="instagram"></i>
+            </a>
+            <a href="https://chat.whatsapp.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="WhatsApp">
+              <i data-lucide="message-circle"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LinkedIn">
+              <i data-lucide="linkedin"></i>
+            </a>
+            <a href="mailto:industryconnect.tkmit@gmail.com" class="social-icon-btn" aria-label="Email">
+              <i data-lucide="mail"></i>
+            </a>
+          </div>
+          <div class="footer-contact-details">
+            <p class="contact-line">
+              <i data-lucide="map-pin" class="contact-icon"></i>
+              <span>TKM Institute of Technology, Kollam, Kerala</span>
+            </p>
+            <p class="contact-line">
+              <i data-lucide="mail" class="contact-icon"></i>
+              <a href="mailto:industryconnect.tkmit@gmail.com">industryconnect.tkmit@gmail.com</a>
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom-row">
+        <p class="footer-copyright">
+          © 2026 Industry Connect TKMIT. All rights reserved.
+        </p>
+        <p class="footer-credit">
+          Designed for students, driven by purpose. <span class="heart-icon">💜</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODALS ==================== -->
+
+  <!-- Modal Backdrop -->
+  <div class="modal-backdrop" id="modal-backdrop" onclick="closeAllModals()"></div>
+
+  <!-- Suggest an Idea Modal -->
+  <div class="modal-dialog" id="modal-suggest">
+    <div class="modal-header">
+      <div class="modal-badge">
+        <i data-lucide="lightbulb" class="modal-icon"></i>
+        <span>Share Your Vision</span>
+      </div>
+      <button class="modal-close-btn" onclick="closeAllModals()" aria-label="Close modal">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <div class="modal-body">
+      <h3 class="modal-title">Suggest an Idea</h3>
+      <p class="modal-desc">Have an idea for an industry workshop, tech talk, mentorship session or competition? Tell us about it!</p>
+      
+      <form class="modal-form" id="suggest-form" onsubmit="submitSuggestFormToGoogle(event)">
+        <div class="form-group">
+          <label for="suggest-name">Your Full Name <span class="required-star">*</span></label>
+          <input type="text" id="suggest-name" required placeholder="e.g. John Doe" class="form-input">
+        </div>
+        <div class="form-group">
+          <label for="suggest-email">Email Address <span class="required-star">*</span></label>
+          <input type="email" id="suggest-email" required placeholder="john@example.com" class="form-input">
+        </div>
+        <div class="form-group">
+          <label for="suggest-category">Category <span class="required-star">*</span></label>
+          <select id="suggest-category" class="form-select">
+            <option value="Technical Workshop / Hands-on">Technical Workshop / Hands-on</option>
+            <option value="Industry Expert Talk / AMA">Industry Expert Talk / AMA</option>
+            <option value="Hackathon / Project Sprint">Hackathon / Project Sprint</option>
+            <option value="Career Mentorship Session">Career Mentorship Session</option>
+            <option value="Other Creative Initiative">Other Creative Initiative</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="suggest-details">Describe Your Idea <span class="required-star">*</span></label>
+          <textarea id="suggest-details" rows="4" required placeholder="What should we organize? What topics or companies would you like involved?" class="form-textarea"></textarea>
+        </div>
+        <button type="submit" class="btn-primary w-full" id="suggest-submit-btn">
+          <span>Submit Proposal</span>
+          <i data-lucide="send" class="btn-icon"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Join the Team / Get Involved Modal -->
+  <div class="modal-dialog" id="modal-join">
+    <div class="modal-header">
+      <div class="modal-badge">
+        <i data-lucide="users" class="modal-icon"></i>
+        <span>Be a Part of the Movement</span>
+      </div>
+      <button class="modal-close-btn" onclick="closeAllModals()" aria-label="Close modal">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <div class="modal-body">
+      <h3 class="modal-title">Join Industry Connect</h3>
+      <p class="modal-desc">Develop leadership, connect directly with industry professionals, and organize flagship events at TKMIT.</p>
+      
+      <form class="modal-form" id="join-form" onsubmit="submitJoinFormToGoogle(event)">
+        <div class="form-group">
+          <label for="join-name">Full Name <span class="required-star">*</span></label>
+          <input type="text" id="join-name" name="fullName" required placeholder="Your full name" class="form-input">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="join-email">College Email Address <span class="required-star">*</span></label>
+            <input type="email" id="join-email" name="email" required placeholder="name@tkmit.ac.in" class="form-input">
+          </div>
+          <div class="form-group">
+            <label for="join-phone">WhatsApp Number <span class="required-star">*</span></label>
+            <input type="tel" id="join-phone" name="phone" required placeholder="+91 98765 43210" class="form-input">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="join-dept">Department & Year <span class="required-star">*</span></label>
+            <input type="text" id="join-dept" name="dept" required placeholder="CSE, 3rd Year" class="form-input">
+          </div>
+          <div class="form-group">
+            <label for="join-role">Team / Domain of Interest <span class="required-star">*</span></label>
+            <select id="join-role" name="role" class="form-select">
+              <option value="Technical and Development Team">Technical and Development Team</option>
+              <option value="UI/UX and Media Design">UI/UX and Media Design</option>
+              <option value="Public Relations and Outreach">Public Relations and Outreach</option>
+              <option value="Event Operations and Management">Event Operations and Management</option>
+              <option value="Content Writing and Social Media">Content Writing and Social Media</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="join-why">Why do you want to join Industry Connect? <span class="required-star">*</span></label>
+          <textarea id="join-why" name="why" rows="3" required placeholder="Share your motivation, relevant skills or past experience..." class="form-textarea"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="join-portfolio">Portfolio, LinkedIn, or GitHub URL <span class="optional-label">(Optional)</span></label>
+          <input type="url" id="join-portfolio" name="portfolio" placeholder="https://linkedin.com/in/username" class="form-input">
+        </div>
+        <button type="submit" class="btn-primary w-full" id="join-submit-btn">
+          <span>Submit Application</span>
+          <i data-lucide="send" class="btn-icon"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Internships Listing Modal -->
+  <div class="modal-dialog modal-lg" id="modal-internships">
+    <div class="modal-header">
+      <div class="modal-badge">
+        <i data-lucide="briefcase" class="modal-icon"></i>
+        <span>Verified Opportunities</span>
+      </div>
+      <button class="modal-close-btn" onclick="closeAllModals()" aria-label="Close modal">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <div class="modal-body">
+      <h3 class="modal-title">Featured Student Internships</h3>
+      <p class="modal-desc">Explore verified industry internships curated exclusively for TKMIT students across technology, design, and operations.</p>
+      
+      <div class="internships-list">
+        <div class="intern-card">
+          <div class="intern-info">
+            <span class="intern-type">Software Development</span>
+            <h4 class="intern-role">Full-Stack Web Engineering Intern</h4>
+            <div class="intern-company-meta">
+              <span><strong>NextGen Technologies</strong> • Bangalore (Hybrid)</span>
+              <span>Stipend: ₹25,000/month • 3-6 Months</span>
+            </div>
+          </div>
+          <button class="btn-primary btn-sm" onclick="showToast('Application link opened in new window!')">Apply Now</button>
+        </div>
+
+        <div class="intern-card">
+          <div class="intern-info">
+            <span class="intern-type">AI & Machine Learning</span>
+            <h4 class="intern-role">Computer Vision & Deep Learning Intern</h4>
+            <div class="intern-company-meta">
+              <span><strong>CogniScale Labs</strong> • Remote</span>
+              <span>Stipend: ₹30,000/month • 6 Months</span>
+            </div>
+          </div>
+          <button class="btn-primary btn-sm" onclick="showToast('Application link opened in new window!')">Apply Now</button>
+        </div>
+
+        <div class="intern-card">
+          <div class="intern-info">
+            <span class="intern-type">UI/UX Design</span>
+            <h4 class="intern-role">Product Design Intern</h4>
+            <div class="intern-company-meta">
+              <span><strong>PixelPulse Studio</strong> • Kochi / Remote</span>
+              <span>Stipend: ₹20,000/month • 3 Months</span>
+            </div>
+          </div>
+          <button class="btn-primary btn-sm" onclick="showToast('Application link opened in new window!')">Apply Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Event Details Dynamic Modal -->
+  <div class="modal-dialog" id="modal-event-detail">
+    <div class="modal-header">
+      <div class="modal-badge" id="event-modal-badge">
+        <i data-lucide="calendar" class="modal-icon"></i>
+        <span id="event-modal-badge-text">Event Details</span>
+      </div>
+      <button class="modal-close-btn" onclick="closeAllModals()" aria-label="Close modal">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <div class="modal-body" id="event-modal-body">
+      <!-- Injected via JavaScript -->
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div class="toast-notification" id="toast-notification">
+    <i data-lucide="check-circle-2" class="toast-icon"></i>
+    <span class="toast-message" id="toast-message">Success message</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
