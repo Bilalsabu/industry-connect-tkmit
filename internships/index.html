@@ -2360,13 +2360,29 @@ button {
 }
 
 /* Dummy / Sample Listing Badge */
-.intern-badge-dummy {
+.intern-badge-dummy,
+.event-badge-demo {
   display: inline-flex;
   align-items: center;
   gap: 4px;
   background: #fffbeb;
   color: #b45309;
   border: 1px solid #fde68a;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.event-badge-official {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
   padding: 4px 10px;
   border-radius: var(--radius-full);
   font-size: 0.72rem;

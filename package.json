@@ -1,0 +1,8 @@
+{
+  "name": "industry-connect-tkmit",
+  "version": "1.0.0",
+  "description": "Industry Connect TKMIT Official Portal",
+  "scripts": {
+    "dev": "node server.js"
+  }
+}
