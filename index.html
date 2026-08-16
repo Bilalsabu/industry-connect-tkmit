@@ -2359,6 +2359,61 @@ button {
   margin: 0 auto 20px;
 }
 
+/* Dummy / Sample Listing Badge */
+.intern-badge-dummy {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #fffbeb;
+  color: #b45309;
+  border: 1px solid #fde68a;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Currently Open Application Status Badge */
+.modal-status-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulseDot 1.8s infinite;
+}
+
+@keyframes pulseDot {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
 @media (max-width: 768px) {
   .search-and-dropdowns {
     grid-template-columns: 1fr;
@@ -2591,12 +2646,7 @@ button {
               </div>
 
               <div class="event-footer">
-                <div class="avatar-stack">
-                  <img src="assets/images/avatars/rayna.jpg" alt="Rayna" class="avatar-img">
-                  <img src="assets/images/avatars/bilal_s.png" alt="Bilal" class="avatar-img">
-                  <img src="assets/images/avatars/megha.jpg" alt="Megha" class="avatar-img">
-                  <img src="assets/images/avatars/sredha.jpg" alt="Sredha" class="avatar-img">
-                </div>
+                <span style="font-size: 0.78rem; color: #64748b; font-weight: 600;">Hands-on Lab</span>
                 <button class="btn-event-details">
                   <span>View Details</span>
                 </button>
@@ -2626,12 +2676,7 @@ button {
               </div>
 
               <div class="event-footer">
-                <div class="avatar-stack">
-                  <img src="assets/images/avatars/ahsan.jpeg" alt="Ahsan" class="avatar-img">
-                  <img src="assets/images/avatars/akashsaji.jpg" alt="Akash" class="avatar-img">
-                  <img src="assets/images/avatars/fathima_kamar.jpg" alt="Fathima" class="avatar-img">
-                  <img src="assets/images/avatars/kasinadh.jpg" alt="Kasinadh" class="avatar-img">
-                </div>
+                <span style="font-size: 0.78rem; color: #64748b; font-weight: 600;">All Branches</span>
                 <button class="btn-event-details">
                   <span>View Details</span>
                 </button>
@@ -2661,12 +2706,7 @@ button {
               </div>
 
               <div class="event-footer">
-                <div class="avatar-stack">
-                  <img src="assets/images/avatars/muneer.jpg" alt="Muneer" class="avatar-img">
-                  <img src="assets/images/avatars/mariam_aysha.jpg" alt="Mariam" class="avatar-img">
-                  <img src="assets/images/avatars/pranav_r.jpg" alt="Pranav" class="avatar-img">
-                  <img src="assets/images/avatars/pj_nidhi.jpg" alt="Nidhi" class="avatar-img">
-                </div>
+                <span style="font-size: 0.78rem; color: #64748b; font-weight: 600;">Campus Wide</span>
                 <button class="btn-event-details">
                   <span>View Details</span>
                 </button>
@@ -2697,12 +2737,7 @@ button {
               </div>
 
               <div class="event-footer">
-                <div class="avatar-stack">
-                  <img src="assets/images/avatars/rayna.jpg" alt="Rayna" class="avatar-img">
-                  <img src="assets/images/avatars/bilal_s.png" alt="Bilal" class="avatar-img">
-                  <img src="assets/images/avatars/megha.jpg" alt="Megha" class="avatar-img">
-                  <img src="assets/images/avatars/sredha.jpg" alt="Sredha" class="avatar-img">
-                </div>
+                <span style="font-size: 0.78rem; color: #64748b; font-weight: 600;">Hands-on Lab</span>
                 <button class="btn-event-details">
                   <span>View Details</span>
                 </button>
@@ -2732,12 +2767,7 @@ button {
               </div>
 
               <div class="event-footer">
-                <div class="avatar-stack">
-                  <img src="assets/images/avatars/ahsan.jpeg" alt="Ahsan" class="avatar-img">
-                  <img src="assets/images/avatars/akashsaji.jpg" alt="Akash" class="avatar-img">
-                  <img src="assets/images/avatars/fathima_kamar.jpg" alt="Fathima" class="avatar-img">
-                  <img src="assets/images/avatars/kasinadh.jpg" alt="Kasinadh" class="avatar-img">
-                </div>
+                <span style="font-size: 0.78rem; color: #64748b; font-weight: 600;">All Branches</span>
                 <button class="btn-event-details">
                   <span>View Details</span>
                 </button>
@@ -2767,12 +2797,7 @@ button {
               </div>
 
               <div class="event-footer">
-                <div class="avatar-stack">
-                  <img src="assets/images/avatars/muneer.jpg" alt="Muneer" class="avatar-img">
-                  <img src="assets/images/avatars/mariam_aysha.jpg" alt="Mariam" class="avatar-img">
-                  <img src="assets/images/avatars/pranav_r.jpg" alt="Pranav" class="avatar-img">
-                  <img src="assets/images/avatars/pj_nidhi.jpg" alt="Nidhi" class="avatar-img">
-                </div>
+                <span style="font-size: 0.78rem; color: #64748b; font-weight: 600;">Campus Wide</span>
                 <button class="btn-event-details">
                   <span>View Details</span>
                 </button>
@@ -2796,7 +2821,7 @@ button {
               <span class="badge-text">Career & Opportunities</span>
             </div>
             <h2 class="section-title">Featured Industry Internships</h2>
-            <p style="color: #64748b; font-size: 0.95rem; margin-top: 6px;">Verified industry internships & live projects curated exclusively for TKMIT students.</p>
+            <p style="color: #64748b; font-size: 0.95rem; margin-top: 6px;">Sample demo internships & opportunities for student exploration.</p>
           </div>
 
           <a href="internships/index.html" class="btn-primary">
@@ -2815,8 +2840,8 @@ button {
                 <i data-lucide="code-2"></i>
                 <span>Software & Cloud</span>
               </div>
-              <span class="intern-badge-verified">
-                <i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verified
+              <span class="intern-badge-dummy">
+                <i data-lucide="info" style="width: 12px; height: 12px;"></i> Sample Demo
               </span>
             </div>
             
@@ -2862,8 +2887,8 @@ button {
                 <i data-lucide="brain"></i>
                 <span>AI & Research</span>
               </div>
-              <span class="intern-badge-verified">
-                <i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verified
+              <span class="intern-badge-dummy">
+                <i data-lucide="info" style="width: 12px; height: 12px;"></i> Sample Demo
               </span>
             </div>
             
@@ -2909,8 +2934,8 @@ button {
                 <i data-lucide="palette"></i>
                 <span>UI/UX & Product</span>
               </div>
-              <span class="intern-badge-verified">
-                <i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verified
+              <span class="intern-badge-dummy">
+                <i data-lucide="info" style="width: 12px; height: 12px;"></i> Sample Demo
               </span>
             </div>
             
@@ -2956,8 +2981,8 @@ button {
                 <i data-lucide="cpu"></i>
                 <span>Hardware & Embedded</span>
               </div>
-              <span class="intern-badge-verified">
-                <i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verified
+              <span class="intern-badge-dummy">
+                <i data-lucide="info" style="width: 12px; height: 12px;"></i> Sample Demo
               </span>
             </div>
             
@@ -3003,8 +3028,8 @@ button {
                 <i data-lucide="server"></i>
                 <span>DevOps & Security</span>
               </div>
-              <span class="intern-badge-verified">
-                <i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verified
+              <span class="intern-badge-dummy">
+                <i data-lucide="info" style="width: 12px; height: 12px;"></i> Sample Demo
               </span>
             </div>
             
@@ -3050,8 +3075,8 @@ button {
                 <i data-lucide="share-2"></i>
                 <span>Growth & Outreach</span>
               </div>
-              <span class="intern-badge-verified">
-                <i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verified
+              <span class="intern-badge-dummy">
+                <i data-lucide="info" style="width: 12px; height: 12px;"></i> Sample Demo
               </span>
             </div>
             
@@ -3524,6 +3549,10 @@ button {
       </button>
     </div>
     <div class="modal-body">
+      <div class="modal-status-open">
+        <span class="pulse-dot"></span>
+        <span>Applications Currently Open • 2026 Batch</span>
+      </div>
       <h3 class="modal-title">Join Industry Connect</h3>
       <p class="modal-desc">Develop leadership, connect directly with industry professionals, and organize flagship events at TKMIT.</p>
       

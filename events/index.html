@@ -2359,6 +2359,61 @@ button {
   margin: 0 auto 20px;
 }
 
+/* Dummy / Sample Listing Badge */
+.intern-badge-dummy {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #fffbeb;
+  color: #b45309;
+  border: 1px solid #fde68a;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Currently Open Application Status Badge */
+.modal-status-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulseDot 1.8s infinite;
+}
+
+@keyframes pulseDot {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
 @media (max-width: 768px) {
   .search-and-dropdowns {
     grid-template-columns: 1fr;
@@ -2537,6 +2592,10 @@ button {
       </button>
     </div>
     <div class="modal-body">
+      <div class="modal-status-open">
+        <span class="pulse-dot"></span>
+        <span>Registrations Currently Open • 2026 Batch</span>
+      </div>
       <h3 class="modal-title" id="modal-event-title">Event Title</h3>
       <div class="event-details-meta-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0 24px; background: #f8fafc; padding: 14px; border-radius: 12px;">
         <div><strong>Date:</strong> <span id="modal-event-date">17 August 2026</span></div>
@@ -2573,8 +2632,7 @@ button {
         time: "10:30 AM",
         venue: "TKMIT Seminar Hall",
         status: "upcoming",
-        description: "Master the art of high-impact professional profiles, personal branding, search algorithm optimisation, and recruiter outreach strategies.",
-        avatars: ["../assets/images/avatars/rayna.jpg", "../assets/images/avatars/bilal_s.png", "../assets/images/avatars/megha.jpg", "../assets/images/avatars/sredha.jpg"]
+        description: "Master the art of high-impact professional profiles, personal branding, search algorithm optimisation, and recruiter outreach strategies."
       },
       {
         id: 2,
@@ -2585,8 +2643,7 @@ button {
         time: "2:00 PM",
         venue: "College Auditorium",
         status: "upcoming",
-        description: "Grand orientation unveiling the 2026-27 Executive Committee, industrial projects, hackathon roadmap, and verified internship pipelines for all branches.",
-        avatars: ["../assets/images/avatars/ahsan.jpeg", "../assets/images/avatars/akashsaji.jpg", "../assets/images/avatars/fathima_kamar.jpg", "../assets/images/avatars/kasinadh.jpg"]
+        description: "Grand orientation unveiling the 2026-27 Executive Committee, industrial projects, hackathon roadmap, and verified internship pipelines for all branches."
       },
       {
         id: 3,
@@ -2597,8 +2654,7 @@ button {
         time: "11:00 AM",
         venue: "Computer Lab 2",
         status: "upcoming",
-        description: "Build, containerize, and deploy modern React/Next.js web applications with serverless architecture and edge database integrations.",
-        avatars: ["../assets/images/avatars/bilal_s.png", "../assets/images/avatars/muneer.jpg", "../assets/images/avatars/mariam_aysha.jpg"]
+        description: "Build, containerize, and deploy modern React/Next.js web applications with serverless architecture and edge database integrations."
       },
       {
         id: 4,
@@ -2609,8 +2665,7 @@ button {
         time: "9:00 AM",
         venue: "Innovation & Incubation Lab",
         status: "upcoming",
-        description: "Flagship 36-hour hackathon bringing together students and industrial mentors to solve real healthcare, sustainability, and edtech challenges.",
-        avatars: ["../assets/images/avatars/pranav_r.jpg", "../assets/images/avatars/pj_nidhi.jpg", "../assets/images/avatars/sredha.jpg"]
+        description: "Flagship 36-hour hackathon bringing together students and industrial mentors to solve real healthcare, sustainability, and edtech challenges."
       },
       {
         id: 5,
@@ -2621,8 +2676,7 @@ button {
         time: "1:30 PM",
         venue: "TKMIT Seminar Hall",
         status: "upcoming",
-        description: "Insightful keynote from AI research engineers on fine-tuning Large Language Models, Retrieval-Augmented Generation (RAG), and agentic workflows.",
-        avatars: ["../assets/images/avatars/akashsaji.jpg", "../assets/images/avatars/rayna.jpg", "../assets/images/avatars/ahsan.jpeg"]
+        description: "Insightful keynote from AI research engineers on fine-tuning Large Language Models, Retrieval-Augmented Generation (RAG), and agentic workflows."
       },
       {
         id: 6,
@@ -2633,8 +2687,7 @@ button {
         time: "10:00 AM",
         venue: "Design & Media Studio",
         status: "upcoming",
-        description: "Interactive UI/UX design masterclass covering modern typography, auto-layout, design tokens, micro-animations, and interactive component libraries.",
-        avatars: ["../assets/images/avatars/megha.jpg", "../assets/images/avatars/fathima_kamar.jpg", "../assets/images/avatars/kasinadh.jpg"]
+        description: "Interactive UI/UX design masterclass covering modern typography, auto-layout, design tokens, micro-animations, and interactive component libraries."
       },
       {
         id: 7,
@@ -2645,8 +2698,7 @@ button {
         time: "2:30 PM",
         venue: "TKMIT Auditorium",
         status: "upcoming",
-        description: "One-on-one resume reviews, mock technical interview sessions, and behavioral interview tips with senior HR partners and alumni.",
-        avatars: ["../assets/images/avatars/muneer.jpg", "../assets/images/avatars/bilal_s.png", "../assets/images/avatars/sredha.jpg"]
+        description: "One-on-one resume reviews, mock technical interview sessions, and behavioral interview tips with senior HR partners and alumni."
       },
       {
         id: 8,
@@ -2657,8 +2709,7 @@ button {
         time: "10:00 AM",
         venue: "Main Campus Quad",
         status: "upcoming",
-        description: "Annual hardware demonstration showcasing student-built robotics, drone systems, ESP32 telemetry sensors, and autonomous vehicles.",
-        avatars: ["../assets/images/avatars/pranav_r.jpg", "../assets/images/avatars/pj_nidhi.jpg", "../assets/images/avatars/rayna.jpg"]
+        description: "Annual hardware demonstration showcasing student-built robotics, drone systems, ESP32 telemetry sensors, and autonomous vehicles."
       }
     ];
 
@@ -2708,9 +2759,9 @@ button {
           </div>
 
           <div class="event-footer" style="margin-top: 18px;">
-            <div class="avatar-stack">
-              ${event.avatars.map(av => `<img src="${av}" alt="Coordinator" class="avatar-img">`).join('')}
-            </div>
+            <span style="font-size: 0.8rem; color: #10b981; font-weight: 700; display: inline-flex; align-items: center; gap: 6px;">
+              <span class="pulse-dot"></span> Open
+            </span>
             <button class="btn-event-details" onclick="openEventDetailsModal(${event.id})">
               <span>View Details</span>
             </button>
