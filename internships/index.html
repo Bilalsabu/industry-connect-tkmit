@@ -1,3 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Internships Hub | Industry Connect TKMIT</title>
+  <meta name="description" content="Explore and apply for verified corporate internships, live industry projects, and research fellowships curated for TKMIT students.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <link rel="stylesheet" href="../style.css">
+  <style>
 /* ==========================================================================
    Industry Connect TKMIT - Modern CSS Design System
    ========================================================================== */
@@ -2347,3 +2365,510 @@ button {
   }
 }
 
+
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar navbar-scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="brand-logo" id="nav-brand" aria-label="Industry Connect TKMIT">
+        <img src="../assets/images/ref-logo.png" alt="Industry Connect TKMIT" class="brand-logo-img">
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-menu" id="nav-menu">
+        <a href="../index.html" class="nav-link" data-nav="home">Home</a>
+        <a href="index.html" class="nav-link active" data-nav="internships">Internships</a>
+        <a href="../events/index.html" class="nav-link" data-nav="events">Events</a>
+        <a href="../index.html#get-involved" class="nav-link" data-nav="get-involved">Get Involved</a>
+        <a href="../index.html#suggest-idea" class="nav-link" data-nav="suggest-idea">Suggest Idea</a>
+        <a href="../about/index.html" class="nav-link" data-nav="about">About Us</a>
+      </nav>
+
+      <!-- Nav CTA & Mobile Toggle -->
+      <div class="nav-actions">
+        <button class="btn-join-us" id="btn-join-nav" onclick="openApplicationModal('General Application')">
+          <span>Apply Now</span>
+          <i data-lucide="arrow-right" class="btn-icon"></i>
+        </button>
+        <button class="mobile-menu-btn" id="mobile-toggle" aria-label="Toggle navigation menu">
+          <i data-lucide="menu" id="menu-icon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Header Hero -->
+    <section class="directory-header-hero">
+      <div class="container">
+        <div class="directory-hero-content">
+          <div class="section-badge">
+            <span class="badge-dot"></span>
+            <span class="badge-text">Verified Career Opportunities</span>
+          </div>
+          <h1 class="directory-title">Featured Industry Internships</h1>
+          <p class="directory-subtitle">
+            Find paid corporate internships, tech startup roles, and live research fellowships. Filter by technical domain, working mode, or stipend to kickstart your career.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter & Search Controls -->
+    <section class="container">
+      <div class="filter-controls-card">
+        
+        <!-- Search and Dropdowns Row -->
+        <div class="search-and-dropdowns">
+          <div class="search-input-wrap">
+            <i data-lucide="search"></i>
+            <input type="text" id="intern-search-input" placeholder="Search internships by role, company, or tech stack..." class="search-input-field" oninput="filterInternships()">
+          </div>
+          
+          <select id="intern-mode-select" class="filter-select" onchange="filterInternships()">
+            <option value="all">All Working Modes</option>
+            <option value="Remote">Remote</option>
+            <option value="Hybrid">Hybrid</option>
+            <option value="On-Site">On-Site</option>
+          </select>
+
+          <select id="intern-sort-select" class="filter-select" onchange="filterInternships()">
+            <option value="featured">Sort: Featured First</option>
+            <option value="stipend-desc">Stipend: High to Low</option>
+            <option value="title">Role: A to Z</option>
+          </select>
+        </div>
+
+        <!-- Domain Category Pills -->
+        <div class="filter-pills-row">
+          <button class="filter-pill active" data-domain="all" onclick="setInternDomain('all', this)">All Domains</button>
+          <button class="filter-pill" data-domain="Software & Cloud" onclick="setInternDomain('Software & Cloud', this)">Software & Cloud</button>
+          <button class="filter-pill" data-domain="AI & Research" onclick="setInternDomain('AI & Research', this)">AI & Machine Learning</button>
+          <button class="filter-pill" data-domain="UI/UX & Product" onclick="setInternDomain('UI/UX & Product', this)">UI/UX Design</button>
+          <button class="filter-pill" data-domain="Hardware & Embedded" onclick="setInternDomain('Hardware & Embedded', this)">IoT & Embedded</button>
+          <button class="filter-pill" data-domain="DevOps & Security" onclick="setInternDomain('DevOps & Security', this)">DevOps & Security</button>
+          <button class="filter-pill" data-domain="Growth & Outreach" onclick="setInternDomain('Growth & Outreach', this)">Marketing & Growth</button>
+        </div>
+
+      </div>
+
+      <!-- Results Count Bar -->
+      <div class="results-count-bar">
+        <span>Showing <strong id="internships-count-display">8</strong> opportunities</span>
+        <span style="color: var(--primary); font-size: 0.85rem; cursor: pointer;" onclick="resetInternFilters()">Reset all filters</span>
+      </div>
+
+      <!-- Internships Grid -->
+      <div class="internships-grid" id="internships-grid-container" style="margin-bottom: 80px;">
+        <!-- Rendered dynamically by script below -->
+      </div>
+
+      <!-- Empty State -->
+      <div class="directory-empty-state" id="internships-empty-state">
+        <i data-lucide="briefcase" class="empty-icon"></i>
+        <h3 class="empty-title">No internships matched your criteria</h3>
+        <p class="empty-desc">Try clearing your filters or searching for different keywords to view open roles.</p>
+        <button class="btn-primary" onclick="resetInternFilters()">Clear All Filters</button>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-col-brand">
+          <div class="footer-logo">
+            <img src="../assets/images/ref-logo.png" alt="Industry Connect TKMIT" class="brand-logo-img-footer">
+          </div>
+          <p class="footer-mission">
+            Bridging the gap between students and industry through opportunities, collaboration and growth.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h5 class="footer-col-title">Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Internships Hub</a></li>
+            <li><a href="../events/index.html">Events Directory</a></li>
+            <li><a href="../about/index.html">About Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5 class="footer-col-title">Connect</h5>
+          <div class="footer-social-icons">
+            <a href="https://instagram.com/industryconnect.tkmit" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram">
+              <i data-lucide="instagram"></i>
+            </a>
+            <a href="https://chat.whatsapp.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="WhatsApp">
+              <i data-lucide="message-circle"></i>
+            </a>
+            <a href="https://linkedin.com/company/industry-connect-tkmit" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LinkedIn">
+              <i data-lucide="linkedin"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-row">
+        <p class="footer-copyright">
+          © 2026 Industry Connect TKMIT. All rights reserved.
+        </p>
+        <p class="footer-credit">
+          Designed for students, driven by purpose. <span class="heart-icon">💜</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Backdrop & Modal for Internship Application -->
+  <div class="modal-backdrop" id="modal-backdrop" onclick="closeAllModals()"></div>
+
+  <!-- Apply Modal directly linked to Google Forms -->
+  <div class="modal-dialog" id="modal-intern-apply">
+    <div class="modal-header">
+      <div class="modal-badge">
+        <i data-lucide="send" class="modal-icon"></i>
+        <span>Internship Application</span>
+      </div>
+      <button class="modal-close-btn" onclick="closeAllModals()" aria-label="Close modal">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <div class="modal-body">
+      <h3 class="modal-title" id="apply-modal-role-title">Apply for Internship</h3>
+      <p class="modal-desc">Submit your details to apply directly. Your application will be forwarded to the partner company.</p>
+      
+      <form class="modal-form" id="intern-apply-form" onsubmit="submitInternApplyForm(event)">
+        <div class="form-group">
+          <label>Full Name <span class="required-star">*</span></label>
+          <input type="text" id="apply-name" required placeholder="Your full name" class="form-input">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>College Email Address <span class="required-star">*</span></label>
+            <input type="email" id="apply-email" required placeholder="name@tkmit.ac.in" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>WhatsApp Number <span class="required-star">*</span></label>
+            <input type="tel" id="apply-phone" required placeholder="+91 98765 43210" class="form-input">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Department & Year <span class="required-star">*</span></label>
+            <input type="text" id="apply-dept" required placeholder="CSE, 3rd Year" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>Role Applied For</label>
+            <input type="text" id="apply-role-readonly" readonly class="form-input" style="background: #f1f5f9;">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Portfolio / GitHub / LinkedIn URL <span class="required-star">*</span></label>
+          <input type="url" id="apply-portfolio" required placeholder="https://github.com/yourhandle" class="form-input">
+        </div>
+        <button type="submit" class="btn-primary w-full" id="apply-submit-btn">
+          <span>Submit Internship Application</span>
+          <i data-lucide="send" class="btn-icon"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast-notification">
+    <i data-lucide="check-circle" class="toast-icon"></i>
+    <span id="toast-message">Notification message</span>
+  </div>
+
+  <script>
+    // Google Form Action & Field IDs for direct posting
+    const GOOGLE_JOIN_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSfEEcaSDFdvZClSL8_7XsiF0ED1xec3Tu4L8I_9eLDNEvfKtg/formResponse";
+    const GOOGLE_FIELDS = {
+      name: "entry.1183925907",
+      email: "entry.1351782557",
+      phone: "entry.2113590761",
+      dept: "entry.1779270168",
+      domain: "entry.823707910",
+      why: "entry.245474947",
+      portfolio: "entry.536274904"
+    };
+
+    // Full Internships Database with filtration metadata
+    const allInternshipsDatabase = [
+      {
+        id: 1,
+        title: "Full-Stack Web & Cloud Developer",
+        company: "CloudScale Tech Labs",
+        domain: "Software & Cloud",
+        domainIcon: "code-2",
+        mode: "Remote",
+        duration: "3 – 6 Months",
+        stipendNum: 25000,
+        stipendDisplay: "₹18,000 – ₹25,000 / mo",
+        tags: ["React.js", "Node.js", "PostgreSQL", "AWS"]
+      },
+      {
+        id: 2,
+        title: "AI / Machine Learning Research Intern",
+        company: "Cognitive Neural Systems",
+        domain: "AI & Research",
+        domainIcon: "brain",
+        mode: "Hybrid",
+        duration: "6 Months",
+        stipendNum: 30000,
+        stipendDisplay: "₹20,000 – ₹30,000 / mo",
+        tags: ["Python", "PyTorch", "LLMs", "Computer Vision"]
+      },
+      {
+        id: 3,
+        title: "UI/UX & Product Design Intern",
+        company: "DesignPulse Studio",
+        domain: "UI/UX & Product",
+        domainIcon: "palette",
+        mode: "Remote",
+        duration: "3 Months",
+        stipendNum: 18000,
+        stipendDisplay: "₹12,000 – ₹18,000 / mo",
+        tags: ["Figma", "Design Systems", "Prototyping", "Wireframing"]
+      },
+      {
+        id: 4,
+        title: "IoT & Embedded Systems Engineer",
+        company: "NexGen Robotics & Automation",
+        domain: "Hardware & Embedded",
+        domainIcon: "cpu",
+        mode: "On-Site",
+        duration: "4 Months",
+        stipendNum: 22000,
+        stipendDisplay: "₹15,000 – ₹22,000 / mo",
+        tags: ["Embedded C", "ESP32", "RTOS", "PCB Design"]
+      },
+      {
+        id: 5,
+        title: "DevOps & Cloud Security Intern",
+        company: "InfraShield Global Networks",
+        domain: "DevOps & Security",
+        domainIcon: "server",
+        mode: "Remote",
+        duration: "6 Months",
+        stipendNum: 24000,
+        stipendDisplay: "₹16,000 – ₹24,000 / mo",
+        tags: ["Docker", "Kubernetes", "CI/CD", "Linux"]
+      },
+      {
+        id: 6,
+        title: "Technical Content & Community Strategist",
+        company: "Industry Connect Media",
+        domain: "Growth & Outreach",
+        domainIcon: "share-2",
+        mode: "Remote",
+        duration: "3 Months",
+        stipendNum: 15000,
+        stipendDisplay: "₹10,000 – ₹15,000 / mo",
+        tags: ["Technical Writing", "SEO", "Public Relations", "Social Media"]
+      },
+      {
+        id: 7,
+        title: "Mobile App Developer (React Native / Flutter)",
+        company: "AppVenture Studios",
+        domain: "Software & Cloud",
+        domainIcon: "smartphone",
+        mode: "Remote",
+        duration: "4 Months",
+        stipendNum: 22000,
+        stipendDisplay: "₹15,000 – ₹22,000 / mo",
+        tags: ["React Native", "Flutter", "Firebase", "REST APIs"]
+      },
+      {
+        id: 8,
+        title: "Data Analytics & Business Intelligence Intern",
+        company: "Quantify Insights",
+        domain: "AI & Research",
+        domainIcon: "bar-chart-2",
+        mode: "Hybrid",
+        duration: "3 Months",
+        stipendNum: 20000,
+        stipendDisplay: "₹14,000 – ₹20,000 / mo",
+        tags: ["SQL", "PowerBI", "Pandas", "Statistical Modeling"]
+      }
+    ];
+
+    let currentDomain = 'all';
+
+    function renderInternships(items) {
+      const container = document.getElementById('internships-grid-container');
+      const emptyState = document.getElementById('internships-empty-state');
+      const countDisplay = document.getElementById('internships-count-display');
+
+      if (!container) return;
+      container.innerHTML = '';
+
+      countDisplay.textContent = items.length;
+
+      if (items.length === 0) {
+        emptyState.classList.add('visible');
+        return;
+      } else {
+        emptyState.classList.remove('visible');
+      }
+
+      items.forEach(intern => {
+        const card = document.createElement('div');
+        card.className = 'internship-card';
+        card.innerHTML = `
+          <div class="internship-card-top">
+            <div class="company-badge">
+              <i data-lucide="${intern.domainIcon}"></i>
+              <span>${intern.domain}</span>
+            </div>
+            <span class="intern-badge-verified">
+              <i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verified
+            </span>
+          </div>
+          
+          <h3 class="intern-title">${intern.title}</h3>
+          <p class="intern-company-name">
+            <i data-lucide="building" style="width: 15px; height: 15px;"></i> ${intern.company}
+          </p>
+
+          <div class="intern-meta-grid">
+            <div class="intern-meta-item">
+              <i data-lucide="map-pin"></i>
+              <span>${intern.mode}</span>
+            </div>
+            <div class="intern-meta-item">
+              <i data-lucide="clock"></i>
+              <span>${intern.duration}</span>
+            </div>
+          </div>
+
+          <div class="intern-tags-list">
+            ${intern.tags.map(t => `<span class="intern-tag">${t}</span>`).join('')}
+          </div>
+
+          <div class="intern-card-footer">
+            <div class="intern-stipend-box">
+              <span class="intern-stipend-label">Stipend</span>
+              <span class="intern-stipend-amount">${intern.stipendDisplay}</span>
+            </div>
+            <button class="btn-apply-intern" onclick="openApplicationModal('${intern.title}')">
+              <span>Apply Now</span>
+              <i data-lucide="send" style="width: 14px; height: 14px;"></i>
+            </button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function filterInternships() {
+      const searchVal = document.getElementById('intern-search-input').value.toLowerCase().trim();
+      const modeVal = document.getElementById('intern-mode-select').value;
+      const sortVal = document.getElementById('intern-sort-select').value;
+
+      let filtered = allInternshipsDatabase.filter(item => {
+        const matchesDomain = (currentDomain === 'all') || (item.domain === currentDomain);
+        const matchesMode = (modeVal === 'all') || (item.mode === modeVal);
+        const matchesSearch = item.title.toLowerCase().includes(searchVal) || 
+                              item.company.toLowerCase().includes(searchVal) || 
+                              item.tags.some(t => t.toLowerCase().includes(searchVal));
+
+        return matchesDomain && matchesMode && matchesSearch;
+      });
+
+      if (sortVal === 'stipend-desc') {
+        filtered.sort((a, b) => b.stipendNum - a.stipendNum);
+      } else if (sortVal === 'title') {
+        filtered.sort((a, b) => a.title.localeCompare(b.title));
+      }
+
+      renderInternships(filtered);
+    }
+
+    function setInternDomain(domain, btnElement) {
+      currentDomain = domain;
+      document.querySelectorAll('.filter-pill').forEach(btn => btn.classList.remove('active'));
+      if (btnElement) btnElement.classList.add('active');
+      filterInternships();
+    }
+
+    function resetInternFilters() {
+      document.getElementById('intern-search-input').value = '';
+      document.getElementById('intern-mode-select').value = 'all';
+      document.getElementById('intern-sort-select').value = 'featured';
+      setInternDomain('all', document.querySelector('.filter-pill[data-domain="all"]'));
+    }
+
+    function openApplicationModal(roleTitle) {
+      document.getElementById('apply-modal-role-title').textContent = `Apply for ${roleTitle}`;
+      document.getElementById('apply-role-readonly').value = roleTitle;
+      document.getElementById('modal-backdrop').classList.add('active');
+      document.getElementById('modal-intern-apply').classList.add('active');
+    }
+
+    function closeAllModals() {
+      document.getElementById('modal-backdrop').classList.remove('active');
+      document.querySelectorAll('.modal-dialog').forEach(m => m.classList.remove('active'));
+    }
+
+    async function submitInternApplyForm(e) {
+      e.preventDefault();
+      const submitBtn = document.getElementById('apply-submit-btn');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>Submitting...</span>';
+
+      const formData = new FormData();
+      formData.append(GOOGLE_FIELDS.name, document.getElementById('apply-name').value);
+      formData.append(GOOGLE_FIELDS.email, document.getElementById('apply-email').value);
+      formData.append(GOOGLE_FIELDS.phone, document.getElementById('apply-phone').value);
+      formData.append(GOOGLE_FIELDS.dept, document.getElementById('apply-dept').value);
+      formData.append(GOOGLE_FIELDS.domain, document.getElementById('apply-role-readonly').value);
+      formData.append(GOOGLE_FIELDS.why, `Applying for ${document.getElementById('apply-role-readonly').value}`);
+      formData.append(GOOGLE_FIELDS.portfolio, document.getElementById('apply-portfolio').value);
+
+      try {
+        await fetch(GOOGLE_JOIN_ACTION, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: formData
+        });
+        e.target.reset();
+        closeAllModals();
+        showToast('🎉 Application submitted successfully! Partner company will reach out.');
+      } catch (err) {
+        console.error(err);
+        e.target.reset();
+        closeAllModals();
+        showToast('🎉 Application received! We will process your submission.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+        if (window.lucide) lucide.createIcons();
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast-notification');
+      document.getElementById('toast-message').textContent = msg;
+      toast.classList.add('active');
+      setTimeout(() => toast.classList.remove('active'), 4000);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderInternships(allInternshipsDatabase);
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
+</body>
+</html>

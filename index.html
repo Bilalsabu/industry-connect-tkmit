@@ -274,24 +274,33 @@ button {
    Hero Section
    ========================================================================== */
 .hero-section {
-  padding: 14px 0 0 0;
+  padding: 8px 0 32px 0;
   margin-top: 0;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
 }
 
 .hero-card-wrapper {
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex: 1;
 }
 
 .hero-card {
   position: relative;
-  min-height: 540px;
+  min-height: calc(100vh - 120px);
+  width: 100%;
   border-radius: var(--radius-xl);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   box-shadow: var(--shadow-lg);
   border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: clamp(60px, 8vh, 100px) 0;
 }
 
 .hero-bg {
@@ -312,8 +321,8 @@ button {
 .hero-content {
   position: relative;
   z-index: 3;
-  padding: 64px 56px 40px 56px;
-  max-width: 620px;
+  padding: 40px clamp(28px, 5vw, 64px);
+  max-width: 680px;
 }
 
 .hero-badge {
@@ -2169,6 +2178,193 @@ button {
   }
 }
 
+/* ==========================================================================
+   Directory Pages: Events & Internships Listing & Filtering Styles
+   ========================================================================== */
+.directory-header-hero {
+  padding: 60px 0 40px;
+  background: linear-gradient(180deg, #f8faff 0%, #ffffff 100%);
+  text-align: center;
+}
+
+.directory-hero-content {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.directory-title {
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 800;
+  color: var(--text-dark);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin: 12px 0 16px;
+}
+
+.directory-subtitle {
+  font-size: 1.05rem;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* Search and Filters Bar */
+.filter-controls-card {
+  background: #ffffff;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(88, 66, 235, 0.12);
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.05);
+  padding: 24px 28px;
+  margin: -20px auto 48px;
+  max-width: 1100px;
+  position: relative;
+  z-index: 10;
+}
+
+.search-and-dropdowns {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.search-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input-wrap i,
+.search-input-wrap svg {
+  position: absolute;
+  left: 16px;
+  color: #94a3b8;
+  width: 18px;
+  height: 18px;
+}
+
+.search-input-field {
+  width: 100%;
+  padding: 12px 16px 12px 46px;
+  border-radius: var(--radius-full);
+  border: 1px solid #e2e8f0;
+  font-size: 0.92rem;
+  background: #f8fafc;
+  color: var(--text-dark);
+  outline: none;
+  transition: all var(--trans-fast);
+}
+
+.search-input-field:focus {
+  border-color: var(--primary);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(88, 66, 235, 0.12);
+}
+
+.filter-select {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: var(--radius-full);
+  border: 1px solid #e2e8f0;
+  font-size: 0.88rem;
+  background: #f8fafc;
+  color: var(--text-dark);
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  transition: all var(--trans-fast);
+}
+
+.filter-select:focus {
+  border-color: var(--primary);
+  background: #ffffff;
+}
+
+/* Category Filter Pills */
+.filter-pills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.filter-pill {
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--trans-fast);
+}
+
+.filter-pill:hover {
+  background: #e2e8f0;
+  color: var(--text-dark);
+}
+
+.filter-pill.active {
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(88, 66, 235, 0.25);
+}
+
+/* Directory Results Summary */
+.results-count-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  color: #64748b;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.results-count-bar span strong {
+  color: var(--text-dark);
+}
+
+/* Empty State */
+.directory-empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  display: none;
+}
+
+.directory-empty-state.visible {
+  display: block;
+}
+
+.empty-icon {
+  width: 64px;
+  height: 64px;
+  color: #94a3b8;
+  margin-bottom: 16px;
+}
+
+.empty-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.empty-desc {
+  font-size: 0.95rem;
+  color: #64748b;
+  max-width: 420px;
+  margin: 0 auto 20px;
+}
+
+@media (max-width: 768px) {
+  .search-and-dropdowns {
+    grid-template-columns: 1fr;
+  }
+}
+
 
   </style>
 </head>
@@ -2184,8 +2380,8 @@ button {
       <!-- Desktop Nav -->
       <nav class="nav-menu" id="nav-menu">
         <a href="#hero" class="nav-link active" data-nav="home">Home</a>
-        <a href="#internships" class="nav-link" data-nav="internships">Internships</a>
-        <a href="#events" class="nav-link" data-nav="events">Events</a>
+        <a href="internships/index.html" class="nav-link" data-nav="internships">Internships</a>
+        <a href="events/index.html" class="nav-link" data-nav="events">Events</a>
         <a href="#get-involved" class="nav-link" data-nav="get-involved">Get Involved</a>
         <a href="#suggest-idea" class="nav-link" data-nav="suggest-idea">Suggest Idea</a>
         <a href="about/index.html" class="nav-link" data-nav="about">About Us</a>
@@ -2207,8 +2403,8 @@ button {
     <div class="mobile-drawer" id="mobile-drawer">
       <nav class="mobile-nav-links">
         <a href="#hero" class="mobile-link active" onclick="closeMobileMenu()">Home</a>
-        <a href="#internships" class="mobile-link" onclick="closeMobileMenu()">Internships</a>
-        <a href="#events" class="mobile-link" onclick="closeMobileMenu()">Events</a>
+        <a href="internships/index.html" class="mobile-link">Internships</a>
+        <a href="events/index.html" class="mobile-link">Events</a>
         <a href="#get-involved" class="mobile-link" onclick="closeMobileMenu()">Get Involved</a>
         <a href="#suggest-idea" class="mobile-link" onclick="closeMobileMenu()">Suggest Idea</a>
         <a href="about/index.html" class="mobile-link">About Us</a>
@@ -2353,7 +2549,7 @@ button {
           </div>
 
           <div class="events-nav-col">
-            <a href="javascript:void(0)" class="view-all-link" onclick="openAllEventsModal()">
+            <a href="events/index.html" class="view-all-link">
               <span>View all</span>
               <i data-lucide="arrow-right"></i>
             </a>
@@ -2603,10 +2799,10 @@ button {
             <p style="color: #64748b; font-size: 0.95rem; margin-top: 6px;">Verified industry internships & live projects curated exclusively for TKMIT students.</p>
           </div>
 
-          <button class="btn-primary" onclick="openInternshipsModal()">
+          <a href="internships/index.html" class="btn-primary">
             <span>View All Internships</span>
             <i data-lucide="arrow-right" class="btn-icon"></i>
-          </button>
+          </a>
         </div>
 
         <!-- Internships Cards Grid -->

@@ -1,3 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events & Workshops | Industry Connect TKMIT</title>
+  <meta name="description" content="Explore and filter all upcoming and past technical workshops, hackathons, orientations, and industry guest lectures at TKM Institute of Technology.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <link rel="stylesheet" href="../style.css">
+  <style>
 /* ==========================================================================
    Industry Connect TKMIT - Modern CSS Design System
    ========================================================================== */
@@ -2347,3 +2365,434 @@ button {
   }
 }
 
+
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar navbar-scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="brand-logo" id="nav-brand" aria-label="Industry Connect TKMIT">
+        <img src="../assets/images/ref-logo.png" alt="Industry Connect TKMIT" class="brand-logo-img">
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-menu" id="nav-menu">
+        <a href="../index.html" class="nav-link" data-nav="home">Home</a>
+        <a href="../internships/index.html" class="nav-link" data-nav="internships">Internships</a>
+        <a href="index.html" class="nav-link active" data-nav="events">Events</a>
+        <a href="../index.html#get-involved" class="nav-link" data-nav="get-involved">Get Involved</a>
+        <a href="../index.html#suggest-idea" class="nav-link" data-nav="suggest-idea">Suggest Idea</a>
+        <a href="../about/index.html" class="nav-link" data-nav="about">About Us</a>
+      </nav>
+
+      <!-- Nav CTA & Mobile Toggle -->
+      <div class="nav-actions">
+        <button class="btn-join-us" id="btn-join-nav" onclick="openJoinModal()">
+          <span>Join Us</span>
+          <i data-lucide="arrow-right" class="btn-icon"></i>
+        </button>
+        <button class="mobile-menu-btn" id="mobile-toggle" aria-label="Toggle navigation menu">
+          <i data-lucide="menu" id="menu-icon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Header Hero -->
+    <section class="directory-header-hero">
+      <div class="container">
+        <div class="directory-hero-content">
+          <div class="section-badge">
+            <span class="badge-dot"></span>
+            <span class="badge-text">TKMIT Tech & Career Hub</span>
+          </div>
+          <h1 class="directory-title">Events & Workshops Directory</h1>
+          <p class="directory-subtitle">
+            Explore premier hands-on workshops, 36-hour hackathons, executive orientations, and industry guest lectures. Filter by domain, format, or search specifically.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter & Search Controls -->
+    <section class="container">
+      <div class="filter-controls-card">
+        
+        <!-- Search and Dropdowns Row -->
+        <div class="search-and-dropdowns">
+          <div class="search-input-wrap">
+            <i data-lucide="search"></i>
+            <input type="text" id="event-search-input" placeholder="Search events by title, keyword, or speaker..." class="search-input-field" oninput="filterEvents()">
+          </div>
+          
+          <select id="event-status-select" class="filter-select" onchange="filterEvents()">
+            <option value="all">All Timelines (2026)</option>
+            <option value="upcoming">Upcoming Events</option>
+            <option value="past">Past Highlights</option>
+          </select>
+
+          <select id="event-sort-select" class="filter-select" onchange="filterEvents()">
+            <option value="date-asc">Date: Soonest First</option>
+            <option value="date-desc">Date: Latest First</option>
+            <option value="name">Title: A to Z</option>
+          </select>
+        </div>
+
+        <!-- Category Pills -->
+        <div class="filter-pills-row">
+          <button class="filter-pill active" data-category="all" onclick="setEventCategory('all', this)">All Categories</button>
+          <button class="filter-pill" data-category="WORKSHOP" onclick="setEventCategory('WORKSHOP', this)">Workshops</button>
+          <button class="filter-pill" data-category="ORIENTATION" onclick="setEventCategory('ORIENTATION', this)">Orientations</button>
+          <button class="filter-pill" data-category="HACKATHON" onclick="setEventCategory('HACKATHON', this)">Hackathons</button>
+          <button class="filter-pill" data-category="TECH TALK" onclick="setEventCategory('TECH TALK', this)">Tech Talks</button>
+          <button class="filter-pill" data-category="COMPETITION" onclick="setEventCategory('COMPETITION', this)">Competitions</button>
+        </div>
+
+      </div>
+
+      <!-- Results Count Bar -->
+      <div class="results-count-bar">
+        <span>Showing <strong id="events-count-display">8</strong> events</span>
+        <span style="color: var(--primary); font-size: 0.85rem; cursor: pointer;" onclick="resetEventFilters()">Reset all filters</span>
+      </div>
+
+      <!-- Events Grid -->
+      <div class="events-track" id="events-grid-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 24px; margin-bottom: 80px;">
+        <!-- Rendered dynamically by script below -->
+      </div>
+
+      <!-- Empty State -->
+      <div class="directory-empty-state" id="events-empty-state">
+        <i data-lucide="calendar-x" class="empty-icon"></i>
+        <h3 class="empty-title">No events matched your criteria</h3>
+        <p class="empty-desc">Try changing your search term or category filters to find upcoming workshops and orientations.</p>
+        <button class="btn-primary" onclick="resetEventFilters()">Clear All Filters</button>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-col-brand">
+          <div class="footer-logo">
+            <img src="../assets/images/ref-logo.png" alt="Industry Connect TKMIT" class="brand-logo-img-footer">
+          </div>
+          <p class="footer-mission">
+            Bridging the gap between students and industry through opportunities, collaboration and growth.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h5 class="footer-col-title">Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../internships/index.html">Internships</a></li>
+            <li><a href="index.html">Events Directory</a></li>
+            <li><a href="../about/index.html">About Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5 class="footer-col-title">Connect</h5>
+          <div class="footer-social-icons">
+            <a href="https://instagram.com/industryconnect.tkmit" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram">
+              <i data-lucide="instagram"></i>
+            </a>
+            <a href="https://chat.whatsapp.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="WhatsApp">
+              <i data-lucide="message-circle"></i>
+            </a>
+            <a href="https://linkedin.com/company/industry-connect-tkmit" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LinkedIn">
+              <i data-lucide="linkedin"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-row">
+        <p class="footer-copyright">
+          © 2026 Industry Connect TKMIT. All rights reserved.
+        </p>
+        <p class="footer-credit">
+          Designed for students, driven by purpose. <span class="heart-icon">💜</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Backdrop & Modal for Event Details / Join -->
+  <div class="modal-backdrop" id="modal-backdrop" onclick="closeAllModals()"></div>
+
+  <!-- Event Details Modal -->
+  <div class="modal-dialog modal-lg" id="modal-event-details">
+    <div class="modal-header">
+      <div class="modal-badge" id="modal-event-badge">WORKSHOP</div>
+      <button class="modal-close-btn" onclick="closeAllModals()" aria-label="Close modal">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <div class="modal-body">
+      <h3 class="modal-title" id="modal-event-title">Event Title</h3>
+      <div class="event-details-meta-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0 24px; background: #f8fafc; padding: 14px; border-radius: 12px;">
+        <div><strong>Date:</strong> <span id="modal-event-date">17 August 2026</span></div>
+        <div><strong>Time:</strong> <span id="modal-event-time">10:30 AM</span></div>
+        <div><strong>Venue:</strong> <span id="modal-event-venue">TKMIT Seminar Hall</span></div>
+      </div>
+      <p class="modal-desc" id="modal-event-desc" style="font-size: 0.95rem; line-height: 1.6; color: #475569;">Event description will appear here.</p>
+      
+      <div style="margin-top: 28px; display: flex; gap: 12px;">
+        <button class="btn-primary" onclick="showToast('🎉 Seat reservation received! Details sent to your email.')" style="flex: 1;">
+          <span>Reserve Your Seat</span>
+          <i data-lucide="check-circle" class="btn-icon"></i>
+        </button>
+        <button class="btn-secondary" onclick="closeAllModals()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast-notification">
+    <i data-lucide="check-circle" class="toast-icon"></i>
+    <span id="toast-message">Notification message</span>
+  </div>
+
+  <script>
+    // Complete Events Database with filtration
+    const allEventsDatabase = [
+      {
+        id: 1,
+        title: "LinkedIn Creation and Optimisation",
+        category: "WORKSHOP",
+        date: "2026-08-17",
+        dateDisplay: "17 August 2026",
+        time: "10:30 AM",
+        venue: "TKMIT Seminar Hall",
+        status: "upcoming",
+        description: "Master the art of high-impact professional profiles, personal branding, search algorithm optimisation, and recruiter outreach strategies.",
+        avatars: ["../assets/images/avatars/rayna.jpg", "../assets/images/avatars/bilal_s.png", "../assets/images/avatars/megha.jpg", "../assets/images/avatars/sredha.jpg"]
+      },
+      {
+        id: 2,
+        title: "Industry Connect Orientation 2026",
+        category: "ORIENTATION",
+        date: "2026-08-17",
+        dateDisplay: "17 August 2026",
+        time: "2:00 PM",
+        venue: "College Auditorium",
+        status: "upcoming",
+        description: "Grand orientation unveiling the 2026-27 Executive Committee, industrial projects, hackathon roadmap, and verified internship pipelines for all branches.",
+        avatars: ["../assets/images/avatars/ahsan.jpeg", "../assets/images/avatars/akashsaji.jpg", "../assets/images/avatars/fathima_kamar.jpg", "../assets/images/avatars/kasinadh.jpg"]
+      },
+      {
+        id: 3,
+        title: "Full-Stack Next.js & Cloud Masterclass",
+        category: "WORKSHOP",
+        date: "2026-08-24",
+        dateDisplay: "24 August 2026",
+        time: "11:00 AM",
+        venue: "Computer Lab 2",
+        status: "upcoming",
+        description: "Build, containerize, and deploy modern React/Next.js web applications with serverless architecture and edge database integrations.",
+        avatars: ["../assets/images/avatars/bilal_s.png", "../assets/images/avatars/muneer.jpg", "../assets/images/avatars/mariam_aysha.jpg"]
+      },
+      {
+        id: 4,
+        title: "36-Hour Hackathon: CodeForImpact",
+        category: "HACKATHON",
+        date: "2026-09-05",
+        dateDisplay: "05 September 2026",
+        time: "9:00 AM",
+        venue: "Innovation & Incubation Lab",
+        status: "upcoming",
+        description: "Flagship 36-hour hackathon bringing together students and industrial mentors to solve real healthcare, sustainability, and edtech challenges.",
+        avatars: ["../assets/images/avatars/pranav_r.jpg", "../assets/images/avatars/pj_nidhi.jpg", "../assets/images/avatars/sredha.jpg"]
+      },
+      {
+        id: 5,
+        title: "AI & Generative Models: From Theory to Prod",
+        category: "TECH TALK",
+        date: "2026-09-19",
+        dateDisplay: "19 September 2026",
+        time: "1:30 PM",
+        venue: "TKMIT Seminar Hall",
+        status: "upcoming",
+        description: "Insightful keynote from AI research engineers on fine-tuning Large Language Models, Retrieval-Augmented Generation (RAG), and agentic workflows.",
+        avatars: ["../assets/images/avatars/akashsaji.jpg", "../assets/images/avatars/rayna.jpg", "../assets/images/avatars/ahsan.jpeg"]
+      },
+      {
+        id: 6,
+        title: "UI/UX Figma Design Systems Workshop",
+        category: "WORKSHOP",
+        date: "2026-10-03",
+        dateDisplay: "03 October 2026",
+        time: "10:00 AM",
+        venue: "Design & Media Studio",
+        status: "upcoming",
+        description: "Interactive UI/UX design masterclass covering modern typography, auto-layout, design tokens, micro-animations, and interactive component libraries.",
+        avatars: ["../assets/images/avatars/megha.jpg", "../assets/images/avatars/fathima_kamar.jpg", "../assets/images/avatars/kasinadh.jpg"]
+      },
+      {
+        id: 7,
+        title: "Campus Placement & Resume Clinic",
+        category: "ORIENTATION",
+        date: "2026-10-15",
+        dateDisplay: "15 October 2026",
+        time: "2:30 PM",
+        venue: "TKMIT Auditorium",
+        status: "upcoming",
+        description: "One-on-one resume reviews, mock technical interview sessions, and behavioral interview tips with senior HR partners and alumni.",
+        avatars: ["../assets/images/avatars/muneer.jpg", "../assets/images/avatars/bilal_s.png", "../assets/images/avatars/sredha.jpg"]
+      },
+      {
+        id: 8,
+        title: "IoT & Robotics Innovation Expo",
+        category: "COMPETITION",
+        date: "2026-10-28",
+        dateDisplay: "28 October 2026",
+        time: "10:00 AM",
+        venue: "Main Campus Quad",
+        status: "upcoming",
+        description: "Annual hardware demonstration showcasing student-built robotics, drone systems, ESP32 telemetry sensors, and autonomous vehicles.",
+        avatars: ["../assets/images/avatars/pranav_r.jpg", "../assets/images/avatars/pj_nidhi.jpg", "../assets/images/avatars/rayna.jpg"]
+      }
+    ];
+
+    let currentCategory = 'all';
+
+    function renderEvents(events) {
+      const container = document.getElementById('events-grid-container');
+      const emptyState = document.getElementById('events-empty-state');
+      const countDisplay = document.getElementById('events-count-display');
+
+      if (!container) return;
+      container.innerHTML = '';
+
+      countDisplay.textContent = events.length;
+
+      if (events.length === 0) {
+        emptyState.classList.add('visible');
+        return;
+      } else {
+        emptyState.classList.remove('visible');
+      }
+
+      events.forEach(event => {
+        const card = document.createElement('div');
+        card.className = 'event-card';
+        card.innerHTML = `
+          <div>
+            <div class="event-type-badge event-badge-purple">${event.category}</div>
+            <h3 class="event-name">${event.title}</h3>
+            
+            <div class="event-meta-list">
+              <div class="meta-row">
+                <div class="meta-item">
+                  <i data-lucide="calendar" class="meta-icon"></i>
+                  <span>${event.dateDisplay}</span>
+                </div>
+                <div class="meta-item">
+                  <i data-lucide="clock" class="meta-icon"></i>
+                  <span>${event.time}</span>
+                </div>
+              </div>
+              <div class="meta-item">
+                <i data-lucide="map-pin" class="meta-icon"></i>
+                <span>${event.venue}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="event-footer" style="margin-top: 18px;">
+            <div class="avatar-stack">
+              ${event.avatars.map(av => `<img src="${av}" alt="Coordinator" class="avatar-img">`).join('')}
+            </div>
+            <button class="btn-event-details" onclick="openEventDetailsModal(${event.id})">
+              <span>View Details</span>
+            </button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function filterEvents() {
+      const searchVal = document.getElementById('event-search-input').value.toLowerCase().trim();
+      const statusVal = document.getElementById('event-status-select').value;
+      const sortVal = document.getElementById('event-sort-select').value;
+
+      let filtered = allEventsDatabase.filter(ev => {
+        const matchesCategory = (currentCategory === 'all') || (ev.category === currentCategory);
+        const matchesStatus = (statusVal === 'all') || (ev.status === statusVal);
+        const matchesSearch = ev.title.toLowerCase().includes(searchVal) || 
+                              ev.description.toLowerCase().includes(searchVal) || 
+                              ev.venue.toLowerCase().includes(searchVal);
+
+        return matchesCategory && matchesStatus && matchesSearch;
+      });
+
+      if (sortVal === 'date-asc') {
+        filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
+      } else if (sortVal === 'date-desc') {
+        filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+      } else if (sortVal === 'name') {
+        filtered.sort((a, b) => a.title.localeCompare(b.title));
+      }
+
+      renderEvents(filtered);
+    }
+
+    function setEventCategory(category, btnElement) {
+      currentCategory = category;
+      document.querySelectorAll('.filter-pill').forEach(btn => btn.classList.remove('active'));
+      if (btnElement) btnElement.classList.add('active');
+      filterEvents();
+    }
+
+    function resetEventFilters() {
+      document.getElementById('event-search-input').value = '';
+      document.getElementById('event-status-select').value = 'all';
+      document.getElementById('event-sort-select').value = 'date-asc';
+      setEventCategory('all', document.querySelector('.filter-pill[data-category="all"]'));
+    }
+
+    function openEventDetailsModal(id) {
+      const ev = allEventsDatabase.find(e => e.id === id);
+      if (!ev) return;
+
+      document.getElementById('modal-event-badge').textContent = ev.category;
+      document.getElementById('modal-event-title').textContent = ev.title;
+      document.getElementById('modal-event-date').textContent = ev.dateDisplay;
+      document.getElementById('modal-event-time').textContent = ev.time;
+      document.getElementById('modal-event-venue').textContent = ev.venue;
+      document.getElementById('modal-event-desc').textContent = ev.description;
+
+      document.getElementById('modal-backdrop').classList.add('active');
+      document.getElementById('modal-event-details').classList.add('active');
+    }
+
+    function closeAllModals() {
+      document.getElementById('modal-backdrop').classList.remove('active');
+      document.querySelectorAll('.modal-dialog').forEach(m => m.classList.remove('active'));
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast-notification');
+      document.getElementById('toast-message').textContent = msg;
+      toast.classList.add('active');
+      setTimeout(() => toast.classList.remove('active'), 4000);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderEvents(allEventsDatabase);
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
