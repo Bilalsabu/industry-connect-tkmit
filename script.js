@@ -77,6 +77,27 @@ function initHorizontalGallery() {
       track.style.transform = '';
       const images = track.querySelectorAll('.gallery-img-inner img');
       images.forEach(img => img.style.transform = '');
+
+      const headerRow = document.querySelector('.gallery-header-row');
+      if (headerRow) {
+        headerRow.style.opacity = '';
+        headerRow.style.transform = '';
+      }
+
+      const ctaCard = document.querySelector('.gallery-cta-card');
+      if (ctaCard) {
+        ctaCard.style.removeProperty('--cta-width');
+        ctaCard.style.removeProperty('--cta-height');
+        ctaCard.style.removeProperty('--cta-radius');
+        ctaCard.style.removeProperty('--cta-padding-top');
+        ctaCard.style.transform = '';
+        const content = ctaCard.querySelector('.gallery-cta-content');
+        if (content) content.style.transform = '';
+      }
+      const wrap = document.querySelector('.gallery-cta-wrap');
+      if (wrap) {
+        wrap.style.removeProperty('--cta-bg-opacity');
+      }
       return;
     }
 
@@ -84,6 +105,7 @@ function initHorizontalGallery() {
     const viewHeight = window.innerHeight;
     const containerHeight = containerRect.height;
 
+    // Scroll progress from 0 (pinned start) to 1 (unpinning)
     const scrolled = -containerRect.top;
     const totalScrollable = containerHeight - viewHeight;
 
@@ -92,19 +114,79 @@ function initHorizontalGallery() {
     let progress = scrolled / totalScrollable;
     progress = Math.max(0, Math.min(1, progress));
 
+    // Calculate horizontal translation
     const trackWidth = track.scrollWidth;
     const viewWidth = window.innerWidth;
-    const maxTranslation = trackWidth - viewWidth + 80;
+    const maxTranslation = trackWidth - viewWidth;
     const xTranslation = -progress * maxTranslation;
 
     track.style.transform = `translateX(${xTranslation}px)`;
 
+    // Fade out and translate the gallery header
+    const headerRow = document.querySelector('.gallery-header-row');
+    if (headerRow) {
+      const headerOpacity = Math.max(0, 1 - progress * 3.2);
+      headerRow.style.opacity = headerOpacity;
+      headerRow.style.transform = `translateY(${-progress * 40}px)`;
+    }
+
     // Parallax effect on card images
     const images = track.querySelectorAll('.gallery-img-inner img');
     images.forEach(img => {
-      const parallaxOffset = (0.5 - progress) * 36;
+      const parallaxOffset = (0.5 - progress) * 45;
       img.style.transform = `translateX(${parallaxOffset}px)`;
     });
+
+    // CTA Card Morph Animation to large centered expanding card (Bijwal Style)
+    const ctaCard = document.querySelector('.gallery-cta-card');
+    if (ctaCard) {
+      const startWidth = 380;
+      const startHeight = 480;
+      const startRadius = 24;
+      const startPaddingTop = 40;
+
+      const targetWidth = Math.min(1140, window.innerWidth - 80);
+      const targetHeight = Math.min(520, window.innerHeight - 140);
+      const targetRadius = 28;
+      const targetPaddingTop = 60;
+
+      const morphStart = 0.75;
+      const morphEnd = 0.98;
+      let t = 0;
+      if (progress >= morphStart) {
+        t = (progress - morphStart) / (morphEnd - morphStart);
+        t = Math.max(0, Math.min(1, t));
+      }
+
+      // Smooth cubic ease
+      const easeT = t * t * (3 - 2 * t);
+
+      const currentWidth = startWidth + (targetWidth - startWidth) * easeT;
+      const currentHeight = startHeight + (targetHeight - startHeight) * easeT;
+      const currentRadius = startRadius + (targetRadius - startRadius) * easeT;
+      const currentPaddingTop = startPaddingTop + (targetPaddingTop - startPaddingTop) * easeT;
+
+      const targetX = (window.innerWidth - targetWidth) / 2;
+      const currentX = targetX * easeT;
+
+      ctaCard.style.setProperty('--cta-width', `${currentWidth}px`);
+      ctaCard.style.setProperty('--cta-height', `${currentHeight}px`);
+      ctaCard.style.setProperty('--cta-radius', `${currentRadius}px`);
+      ctaCard.style.setProperty('--cta-padding-top', `${currentPaddingTop}px`);
+
+      const wrap = document.querySelector('.gallery-cta-wrap');
+      if (wrap) {
+        wrap.style.setProperty('--cta-bg-opacity', easeT);
+      }
+
+      const content = ctaCard.querySelector('.gallery-cta-content');
+      if (content) {
+        const scale = 1 + easeT * 0.12;
+        content.style.transform = `scale(${scale})`;
+      }
+
+      ctaCard.style.transform = `translateX(${currentX}px)`;
+    }
   }
 
   window.addEventListener('scroll', updateGalleryScroll, { passive: true });

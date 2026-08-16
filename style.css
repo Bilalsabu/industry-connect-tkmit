@@ -1881,15 +1881,15 @@ button {
    ========================================================================== */
 .section-gallery {
   position: relative;
-  background: #0b0f19;
+  background: #080c14;
   color: #ffffff;
-  overflow: hidden;
-  padding: 0 0 60px 0;
+  overflow: visible;
+  padding: 0;
 }
 
 .gallery-scroll-container {
   position: relative;
-  height: 280vh; /* Scroll runway for smooth horizontal translation */
+  height: 420vh; /* Smooth pinned scroll runway */
   width: 100%;
 }
 
@@ -1902,55 +1902,46 @@ button {
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  padding: 40px 0;
+  padding: 0;
+  gap: 30px;
 }
 
 .gallery-header-row {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
   max-width: 100%;
-  padding: 0 clamp(24px, 4vw, 56px);
-  margin-bottom: 24px;
+  padding: 0 clamp(24px, 5vw, 64px);
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  flex-direction: column;
+  align-items: flex-start;
   z-index: 5;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
-.gallery-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(88, 66, 235, 0.25);
-  border: 1px solid rgba(88, 66, 235, 0.4);
-  color: #a5b4fc;
-  padding: 6px 14px;
-  border-radius: var(--radius-full);
-  font-size: 0.8rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-
-.gallery-title {
-  font-size: clamp(2rem, 3.5vw, 3rem);
+.gallery-sec-title {
+  font-size: clamp(32px, 4.5vw, 52px);
   font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1.5px;
+  margin-top: 10px;
   color: #ffffff;
-  letter-spacing: -0.02em;
 }
 
-.gallery-subtext {
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.65);
-  max-width: 480px;
+.gallery-sec-title span {
+  color: #a5b4fc;
 }
 
 .gallery-horizontal-track {
   display: flex;
-  gap: 36px;
-  padding: 0 clamp(24px, 4vw, 56px);
+  align-items: center;
+  gap: 40px;
+  padding: 0 0 0 10vw;
   width: max-content;
   will-change: transform;
   transform: translateX(0);
-  transition: transform 0.08s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .gallery-card {
@@ -1959,19 +1950,18 @@ button {
   flex-shrink: 0;
   border-radius: 24px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   position: relative;
-  background: rgba(18, 24, 38, 0.85);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+  background: #0f172a;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   padding: 12px;
-  transition: border-color 0.3s ease, transform 0.3s ease;
+  transition: border-color 0.3s;
 }
 
 .gallery-card:hover {
   border-color: rgba(88, 66, 235, 0.6);
-  transform: translateY(-4px);
 }
 
 .gallery-img-inner {
@@ -1980,24 +1970,23 @@ button {
   border-radius: 18px;
   overflow: hidden;
   position: relative;
-  background: #1e293b;
 }
 
 .gallery-img-inner img {
-  width: 115%;
+  width: 120%;
   height: 100%;
   object-fit: cover;
   position: absolute;
-  left: -7.5%;
+  left: -10%;
   top: 0;
   will-change: transform;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .gallery-hover-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(11, 15, 25, 0.55);
+  background: rgba(6, 6, 6, 0.45);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   display: flex;
@@ -2011,7 +2000,7 @@ button {
 }
 
 .gallery-hover-overlay span {
-  color: #ffffff;
+  color: #fff;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -2019,7 +2008,7 @@ button {
 }
 
 .gallery-hover-overlay svg {
-  color: #ffffff;
+  color: #fff;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -2041,7 +2030,7 @@ button {
 .gallery-card-info h4 {
   font-size: 18px;
   font-weight: 700;
-  color: #ffffff;
+  color: #fff;
 }
 
 .gallery-card-info p {
@@ -2050,37 +2039,87 @@ button {
   font-weight: 500;
 }
 
-/* Gallery CTA Final Card */
-.gallery-cta-card {
-  width: 420px;
+/* Gallery CTA Morph Styles */
+.gallery-cta-wrap {
+  width: 100vw;
   height: 480px;
   flex-shrink: 0;
-  border-radius: 24px;
-  background: linear-gradient(135deg, #5842eb 0%, #3725b8 100%);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: visible;
+  position: relative;
+  background: transparent;
+}
+
+.gallery-cta-bg-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at 50% 50%, rgba(88, 66, 235, 0.25) 0%, rgba(8, 12, 20, 0.8) 70%);
+  opacity: var(--cta-bg-opacity, 0);
+  z-index: 1;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.gallery-cta-card {
+  width: var(--cta-width, 380px);
+  height: var(--cta-height, 480px);
+  border-radius: var(--cta-radius, 24px);
+  background: linear-gradient(135deg, rgba(88, 66, 235, 0.2) 0%, rgba(88, 66, 235, 0.05) 100%);
+  border: 1px solid rgba(88, 66, 235, 0.4);
+  box-shadow: 0 20px 60px rgba(88, 66, 235, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--cta-padding-top, 40px) 40px;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  will-change: width, height, border-radius, padding-top;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.gallery-cta-card:hover {
+  border-color: rgba(88, 66, 235, 0.8);
+  box-shadow: 0 25px 70px rgba(88, 66, 235, 0.4);
+}
+
+.gallery-cta-content {
+  max-width: 700px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-  padding: 40px 32px;
-  box-shadow: 0 25px 60px rgba(88, 66, 235, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  gap: 20px;
+  transform-origin: center center;
+  will-change: transform;
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.gallery-cta-card h3 {
-  font-size: 2rem;
+.gallery-cta-content .cta-title {
+  font-size: clamp(22px, 3.5vw, 44px);
   font-weight: 800;
-  color: #ffffff;
-  margin-bottom: 12px;
+  line-height: 1.2;
+  color: #fff;
+  letter-spacing: -1.2px;
+  margin: 0;
 }
 
-.gallery-cta-card p {
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 28px;
-  line-height: 1.5;
+.gallery-cta-content .cta-desc {
+  font-size: clamp(14px, 1.6vw, 16px);
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 580px;
 }
 
+/* Mobile Overrides for Morph Card */
 @media (max-width: 1024px) {
   .gallery-scroll-container {
     height: auto;
@@ -2090,10 +2129,25 @@ button {
     height: auto;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    padding: 60px 0;
+  }
+  .gallery-header-row {
+    position: relative;
+    top: auto;
+    margin-bottom: 24px;
   }
   .gallery-horizontal-track {
     overflow-x: auto;
-    padding-bottom: 20px;
+    padding: 0 20px;
+  }
+  .gallery-cta-wrap {
+    width: auto;
+  }
+  .gallery-cta-card {
+    width: 340px !important;
+    height: 480px !important;
+    border-radius: 24px !important;
+    transform: none !important;
   }
 }
 
